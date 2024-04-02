@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/shop">
+    <BrowserRouter basename="/shop_ts_react">
       <App />
     </BrowserRouter>
   </React.StrictMode>
