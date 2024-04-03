@@ -4,6 +4,9 @@ import { PersistConfig } from "redux-persist/es/types";
 import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/slice";
 
+export interface RootState {
+  auth: AuthState;
+}
 export interface AuthState {
   isLoggedIn: boolean;
   user: {

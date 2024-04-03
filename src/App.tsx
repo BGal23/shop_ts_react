@@ -1,5 +1,8 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshUser } from "./redux/auth/operations";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 
 interface RouteProps {
   component: React.ComponentType;
@@ -17,7 +20,17 @@ const PrivateRoute: React.FC<RouteProps> = lazy(
   () => import("./components/PrivateRoute/PrivateRoute")
 );
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  if (isRefreshing) {
+    return <div>Refreshing...</div>;
+  }
   return (
     <Suspense fallback={<h3>Loading...</h3>}>
       <Routes>
@@ -35,6 +48,6 @@ function App() {
       </Routes>
     </Suspense>
   );
-}
+};
 
 export default App;
