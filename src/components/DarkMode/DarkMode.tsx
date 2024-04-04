@@ -10,13 +10,13 @@ const DarkMode: React.FC<DarkModeProps> = ({ children }) => {
 
   return (
     <div className={isModeOn ? style.darkMode : ""}>
-      <button
+      {/* <button
         className={style.button}
         type="button"
         onClick={() => setIsModeOn(!isModeOn)}
       >
         dark mode
-      </button>
+      </button> */}
       {children}
     </div>
   );

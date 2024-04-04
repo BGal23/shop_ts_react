@@ -8,7 +8,10 @@ const Header = () => {
     <DarkMode>
       <header>
         <Container>
-          <div className={style.header}>header</div>
+          <div className={style.header}>
+            <div className={style.logo}>SHOP</div>
+            <button className={style.homeBtn}>🏠</button>
+          </div>
         </Container>
       </header>
       <main>
