@@ -1,8 +1,7 @@
-import { RootState } from "../store";
+import { AuthState } from "../store";
 
-export const selectIsLoggedIn = (state: RootState): boolean =>
-  state.auth.isLoggedIn;
-export const selectUserName = (state: RootState): string | null =>
-  state.auth.user.name;
-export const selectIsRefreshing = (state: RootState): boolean =>
-  state.auth.isRefreshing;
+export const selectIsLoggedIn = (state: AuthState): boolean => state.isLoggedIn;
+export const selectUserName = (state: AuthState): string | null =>
+  state.user.name;
+export const selectIsRefreshing = (state: AuthState): boolean =>
+  state.isRefreshing;
