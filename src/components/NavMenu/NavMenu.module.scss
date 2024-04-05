@@ -1,0 +1,10 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  color: var(--color);
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+}

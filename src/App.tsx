@@ -11,6 +11,9 @@ interface RouteProps {
 
 const Header = lazy(() => import("./components/Header/Header"));
 const Home = lazy(() => import("./pages/Home/Home"));
+const Categories = lazy(() => import("./pages/Categories/Categories"));
+const AboutUs = lazy(() => import("./pages/AboutUs/AboutUs"));
+const User = lazy(() => import("./pages/User/User"));
 const Login = lazy(() => import("./pages/Login/Login"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 const RestrictedRoute: React.FC<RouteProps> = lazy(
@@ -35,9 +38,12 @@ const App = () => {
     <Suspense fallback={<h3>Loading...</h3>}>
       <Routes>
         <Route path="/" element={<Header />}>
+          <Route index element={<Home />} />
+          <Route path="categories" element={<Categories />} />
+          <Route path="aboutus" element={<AboutUs />} />
           <Route
-            index
-            element={<PrivateRoute component={Home} path="/login" />}
+            path="login"
+            element={<PrivateRoute component={User} path="/" />}
           />
           <Route
             path="login"
