@@ -1,11 +1,11 @@
 import { ReactNode, useState } from "react";
 import style from "./DarkMode.module.scss";
 
-interface DarkModeProps {
+interface Props {
   children: ReactNode;
 }
 
-const DarkMode: React.FC<DarkModeProps> = ({ children }) => {
+const DarkMode: React.FC<Props> = ({ children }) => {
   const [isModeOn, setIsModeOn] = useState<boolean>(false);
 
   return (

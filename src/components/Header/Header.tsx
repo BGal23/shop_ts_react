@@ -25,7 +25,7 @@ const Header = () => {
                 {isModalOpen ? "CLOSE" : "HOME"}
               </button>
             ) : (
-              <NavMenu />
+              <NavMenu setIsModalOpen={setIsModalOpen} />
             )}
           </div>
         </Container>
@@ -35,7 +35,9 @@ const Header = () => {
           <Outlet />
         </Container>
       </main>
-      {isMobile && <MenuModal isModalOpen={isModalOpen} />}
+      {isMobile && (
+        <MenuModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      )}
     </DarkMode>
   );
 };
