@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import style from "./NavMenu.module.scss";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { useSelector, useDispatch } from "react-redux";
+import { selectIsLoggedIn, selectUserName } from "../../redux/auth/selectors";
+import { logout } from "../../redux/auth/operations";
+import links from "./links";
 
 interface Props {
   setIsModalOpen: (isOpenModal: boolean) => void;
@@ -18,29 +20,35 @@ const StyledLink = styled(NavLink)`
 
 const NavMenu: React.FC<Props> = ({ setIsModalOpen }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const userName = useSelector(selectUserName);
+  const dispatch = useDispatch();
 
-  const links: string[] = ["Home", "Categories", "About Us", "User", "Logout"];
-
-  if (!isLoggedIn) {
-    links.splice(links.indexOf("User"), 1);
-    links.splice(links.indexOf("Logout"), 1, "Login");
-  }
   return (
     <div>
       <ul className={style.list}>
-        {links.map((link, index) => (
-          <StyledLink
-            onClick={() => setIsModalOpen(false)}
-            to={
-              link === "Home"
-                ? "/"
-                : `/${link.toLowerCase().split(" ").join("_")}`
-            }
-            key={index}
-          >
-            {link}
-          </StyledLink>
-        ))}
+        {links
+          .filter((link) => link.show === undefined || link.show === isLoggedIn)
+          .map((link) => (
+            <li key={link.index}>
+              {!link.logout ? (
+                <StyledLink
+                  onClick={() => setIsModalOpen(false)}
+                  to={link.link}
+                >
+                  {link.name ? link.name : userName}
+                </StyledLink>
+              ) : (
+                <NavLink
+                  onClick={() => {
+                    setIsModalOpen(false), dispatch(logout());
+                  }}
+                  to={link.link}
+                >
+                  {link.name}
+                </NavLink>
+              )}
+            </li>
+          ))}
       </ul>
     </div>
   );

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
-//import { getAllProducts } from "../../api/products";
+import Hero from "../../components/Hero/Hero";
+import Presentation from "../../components/Presentation/Presentation";
+import { getAllProducts } from "../../api/products";
 
 const Home = () => {
   useEffect(() => {
@@ -7,10 +9,15 @@ const Home = () => {
   });
 
   const showAllProducts = async () => {
-    //console.log(await getAllProducts());
+    console.log(await getAllProducts());
   };
 
-  return <p>Home</p>;
+  return (
+    <>
+      <Hero />
+      <Presentation />
+    </>
+  );
 };
 
 export default Home;
