@@ -1,0 +1,22 @@
+.ulContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 5em;
+  overflow-x: auto;
+}
+
+.liContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+}
+
+.image {
+  width: 320px;
+  height: 420px;
+}
+
+.title {
+  text-align: center;
+}
