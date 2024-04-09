@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import getCategory from "../../api/category";
 import style from "./Category.module.scss";
+import { Link, useParams } from "react-router-dom";
 
 interface Product {
   id: number;
@@ -9,26 +10,37 @@ interface Product {
   image: string;
 }
 
-const Category = ({ category }) => {
+interface Props {
+  category: string;
+  limit: number;
+}
+
+const Category = ({ category, limit }: Props) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const { categoryId } = useParams<{ categoryId: string }>();
 
   useEffect(() => {
     showProducts();
-  }, []);
+  }, [categoryId]);
 
   const showProducts = async () => {
-    setProducts(await getCategory(category));
+    setProducts(await getCategory(category, limit));
   };
 
   return (
     <div>
-      <h2>{category.toUpperCase()}</h2>
-      <ul className={style.ulContainer}>
+      <ul className={limit < 5 ? style.ulContainer : ""}>
         {products.map((product) => (
           <li className={style.liContainer} key={product.id}>
-            <h3 className={style.title}>{product.title}</h3>
-            <img className={style.image} src={product.image} />
-            <h3>Price {product.price} $</h3>
+            <Link to={`/product/${product.id}`}>
+              <h3 className={style.title}>{product.title}</h3>
+              <img
+                className={style.image}
+                src={product.image}
+                alt={product.title}
+              />
+              <h3>Price {product.price} $</h3>
+            </Link>
           </li>
         ))}
       </ul>

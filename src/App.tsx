@@ -7,6 +7,7 @@ import { selectIsRefreshing } from "./redux/auth/selectors";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Categories from "./pages/Categories/Categories";
+import OneCategory from "./pages/OneCategory/OneCategory";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import User from "./pages/User/User";
 import Login from "./pages/Login/Login";
@@ -14,6 +15,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import NotFound from "./pages/NotFound/NotFound";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import OneProduct from "./pages/OneProduct/OneProduct";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,8 @@ const App = () => {
       <Route path="/" element={<Header />}>
         <Route index element={<Home />} />
         <Route path="categories" element={<Categories />} />
+        <Route path="categories/:categoryId" element={<OneCategory />} />
+        <Route path="product/:productId" element={<OneProduct />} />
         <Route path="about_us" element={<AboutUs />} />
         <Route
           path="user"

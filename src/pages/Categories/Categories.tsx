@@ -1,6 +1,7 @@
 import getAllCategories from "../../api/categories";
 import { useEffect, useState } from "react";
 import Category from "../../components/Category/Category";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   const [categories, setCategories] = useState<string[]>([]);
@@ -17,7 +18,12 @@ const Categories = () => {
     <>
       <h1>ALL CATEGORIES</h1>
       {categories.map((category, index) => (
-        <Category key={index} category={category} />
+        <div key={index}>
+          <h2>
+            <Link to={`${category}`}>{category.toUpperCase()}</Link>
+          </h2>
+          <Category category={category} limit={3} />
+        </div>
       ))}
     </>
   );
