@@ -1,7 +1,7 @@
-import distances from "./daneZad.ts";
+import Description from "../../components/Description/Description";
 
 const AboutUs = () => {
-  return <>AboutUs</>;
+  return <Description />;
 };
 
 export default AboutUs;

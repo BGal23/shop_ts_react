@@ -1,0 +1,16 @@
+.ulContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
+
+.liContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.image {
+  width: 20em;
+  height: 15em;
+}

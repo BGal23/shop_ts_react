@@ -27,7 +27,8 @@
   height: 25em;
   border: 2px solid black;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   @media screen and (min-width: 1280px) {
     height: 20em;

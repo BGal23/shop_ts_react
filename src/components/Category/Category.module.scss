@@ -1,8 +1,16 @@
-.ulContainer {
+.ulContainerLess {
   display: flex;
   flex-direction: row;
   gap: 5em;
   overflow-x: auto;
+}
+
+.ulContainerMore {
+  @media screen and (min-width: 767px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+  }
 }
 
 .liContainer {

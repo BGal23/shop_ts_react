@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 // import style from "./Product.module.scss";
-import { useParams } from "react-router-dom";
 import { getProduct } from "../../api/product";
 
 interface Product {
@@ -22,7 +21,6 @@ interface Props {
 
 const Product = ({ id }: Props) => {
   const [product, setProduct] = useState<Product>();
-  //   const { categoryId } = useParams<{ categoryId: string }>();
 
   useEffect(() => {
     showProduct();
