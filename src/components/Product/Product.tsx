@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 // import style from "./Product.module.scss";
 import { getProduct } from "../../api/product";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/products/operations";
 
 interface Product {
   id: number;
@@ -21,6 +23,7 @@ interface Props {
 
 const Product = ({ id }: Props) => {
   const [product, setProduct] = useState<Product>();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     showProduct();
@@ -30,8 +33,15 @@ const Product = ({ id }: Props) => {
     setProduct(await getProduct(id));
   };
 
+  const addToCart = () => {
+    const name: string = product.title;
+    const number: number = product.price;
+
+    dispatch(addProduct({ name, number }));
+  };
+
   return (
-    <>
+    <div>
       {product && (
         <div>
           <h2>{product.title}</h2>
@@ -42,7 +52,10 @@ const Product = ({ id }: Props) => {
           <p>{product.description}</p>
         </div>
       )}
-    </>
+      <button type="button" onClick={addToCart}>
+        Add to cart
+      </button>
+    </div>
   );
 };
 

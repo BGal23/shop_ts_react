@@ -8,7 +8,7 @@ const OneProduct = () => {
 
   return (
     <div>
-      <Link to={goBackLink}>Go to back</Link>
+      <Link to={goBackLink}>Go back</Link>
       <Product id={productId} />
     </div>
   );

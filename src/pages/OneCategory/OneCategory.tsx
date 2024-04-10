@@ -8,7 +8,7 @@ const OneCategory = () => {
 
   return (
     <>
-      <Link to={goBackLink}>Go to back</Link>
+      <Link to={goBackLink}>Go back</Link>
       <h2>{categoryName.toUpperCase().split("%20").join(" ")}</h2>
       <Category category={categoryName} limit={20} />
     </>

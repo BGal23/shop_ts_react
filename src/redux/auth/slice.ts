@@ -1,9 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { register, login, logout, refreshUser } from "./operations";
-import { AuthState } from "../store";
+
+interface State {
+  isLoggedIn: boolean;
+  user: {
+    name: string | null;
+    email: string | null;
+  };
+  token: string | null;
+  isRefreshing: boolean;
+}
 
 const setCommonState = (
-  state: AuthState,
+  state: State,
   action: PayloadAction<{
     user: { name: string; email: string };
     token: string;
@@ -15,7 +24,7 @@ const setCommonState = (
   state.token = action.payload.token;
 };
 
-const initialState: AuthState = {
+const initialState: State = {
   isLoggedIn: false,
   user: { name: null, email: null },
   token: null,

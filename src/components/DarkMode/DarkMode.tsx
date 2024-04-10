@@ -1,25 +1,20 @@
-import { ReactNode, useState } from "react";
+import { useEffect } from "react";
 import style from "./DarkMode.module.scss";
+import { useSelector } from "react-redux";
+import { selectThemeMode } from "../../redux/theme/selectors";
 
-interface Props {
-  children: ReactNode;
-}
+const DarkMode = () => {
+  const isDarkModeOn = useSelector(selectThemeMode);
 
-const DarkMode: React.FC<Props> = ({ children }) => {
-  const [isModeOn, setIsModeOn] = useState<boolean>(false);
+  useEffect(() => {
+    if (isDarkModeOn) {
+      document.body.classList.add(style.darkMode);
+    } else {
+      document.body.classList.remove(style.darkMode);
+    }
+  }, [isDarkModeOn]);
 
-  return (
-    <div className={isModeOn ? style.darkMode : ""}>
-      {/* <button
-        className={style.button}
-        type="button"
-        onClick={() => setIsModeOn(!isModeOn)}
-      >
-        dark mode
-      </button> */}
-      {children}
-    </div>
-  );
+  return null;
 };
 
 export default DarkMode;

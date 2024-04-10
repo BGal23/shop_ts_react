@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import OneProduct from "./pages/OneProduct/OneProduct";
+import { fetchProducts } from "./redux/products/operations";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   if (isRefreshing) {
