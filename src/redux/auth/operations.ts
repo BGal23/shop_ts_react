@@ -14,14 +14,8 @@ export const register = createAsyncThunk(
       const res = await axios.post("/users/signup", credentials);
       setAuthorizationToken(res.data.token);
       return res.data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return thunkAPI.rejectWithValue(
-          error.response?.data?.message || "An error occurred"
-        );
-      } else {
-        return thunkAPI.rejectWithValue("An error occurred");
-      }
+    } catch (error: unknown) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -33,14 +27,8 @@ export const login = createAsyncThunk(
       const res = await axios.post("/users/login", credentials);
       setAuthorizationToken(res.data.token);
       return res.data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return thunkAPI.rejectWithValue(
-          error.response?.data?.message || "An error occurred"
-        );
-      } else {
-        return thunkAPI.rejectWithValue("An error occurred");
-      }
+    } catch (error: unknown) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -50,14 +38,8 @@ export const logout = createAsyncThunk("/users/logout", async (_, thunkAPI) => {
     const res = await axios.post("/users/logout");
     setAuthorizationToken("");
     return res.data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "An error occurred"
-      );
-    } else {
-      return thunkAPI.rejectWithValue("An error occurred");
-    }
+  } catch (error: unknown) {
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -75,14 +57,8 @@ export const refreshUser = createAsyncThunk(
       setAuthorizationToken(token);
       const res = await axios.get("/users/current");
       return res.data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return thunkAPI.rejectWithValue(
-          error.response?.data?.message || "An error occurred"
-        );
-      } else {
-        return thunkAPI.rejectWithValue("An error occurred");
-      }
+    } catch (error: unknown) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

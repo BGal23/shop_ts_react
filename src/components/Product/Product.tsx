@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 // import style from "./Product.module.scss";
 import { getProduct } from "../../api/product";
+import { addProduct } from "../../redux/data/cartSlice";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../../redux/products/operations";
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   price: number;
@@ -34,10 +34,7 @@ const Product = ({ id }: Props) => {
   };
 
   const addToCart = () => {
-    const name: string = product.title;
-    const number: number = product.price;
-
-    dispatch(addProduct({ name, number }));
+    dispatch(addProduct(product));
   };
 
   return (

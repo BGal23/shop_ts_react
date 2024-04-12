@@ -1,19 +1,11 @@
-import getAllCategories from "../../api/categories";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Category from "../../components/Category/Category";
 import { Link, useLocation } from "react-router-dom";
+import { selectCategoriesName } from "../../redux/data/selectors";
 
 const Categories = () => {
-  const [categories, setCategories] = useState<string[]>([]);
   const location = useLocation();
-
-  useEffect(() => {
-    showAllCategories();
-  }, []);
-
-  const showAllCategories = async () => {
-    setCategories(await getAllCategories());
-  };
+  const categories = useSelector(selectCategoriesName);
 
   return (
     <>

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
+import { getCategoriesName } from "./redux/data/operations";
 
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
@@ -16,7 +17,6 @@ import NotFound from "./pages/NotFound/NotFound";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import OneProduct from "./pages/OneProduct/OneProduct";
-import { fetchProducts } from "./redux/products/operations";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,12 +24,13 @@ const App = () => {
 
   useEffect(() => {
     dispatch(refreshUser());
-    dispatch(fetchProducts());
+    dispatch(getCategoriesName());
   }, [dispatch]);
 
   if (isRefreshing) {
     return <div>Refreshing...</div>;
   }
+
   return (
     <Routes>
       <Route path="/" element={<Header />}>
@@ -57,23 +58,3 @@ const App = () => {
 };
 
 export default App;
-
-// interface RouteProps {
-//   component: React.ComponentType;
-//   path: string;
-// }
-
-// const Header = lazy(() => import("./components/Header/Header"));
-// const Home = lazy(() => import("./pages/Home/Home"));
-// const Categories = lazy(() => import("./pages/Categories/Categories"));
-// const AboutUs = lazy(() => import("./pages/AboutUs/AboutUs"));
-// const User = lazy(() => import("./pages/User/User"));
-// const Login = lazy(() => import("./pages/Login/Login"));
-// const SignUp = lazy(() => import("./pages/SignUp/SignUp"));
-// const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
-// const RestrictedRoute: React.FC<RouteProps> = lazy(
-//   () => import("./components/RestrictedRoute/RestrictedRoute")
-// );
-// const PrivateRoute: React.FC<RouteProps> = lazy(
-//   () => import("./components/PrivateRoute/PrivateRoute")
-// );

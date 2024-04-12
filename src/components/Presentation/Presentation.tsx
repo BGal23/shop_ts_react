@@ -1,19 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import style from "./Presentation.module.scss";
-import { useEffect, useState } from "react";
-import getAllCategories from "../../api/categories";
+import { useSelector } from "react-redux";
+import { selectCategoriesName } from "../../redux/data/selectors";
 
 const Presentation = () => {
-  const [categories, setCategories] = useState<string[]>([]);
   const location = useLocation();
-
-  useEffect(() => {
-    showAllCategories();
-  }, []);
-
-  const showAllCategories = async () => {
-    setCategories(await getAllCategories());
-  };
+  const categories = useSelector(selectCategoriesName);
 
   return (
     <div className={style.container}>

@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { register, login, logout, refreshUser } from "./operations";
 
 interface State {
@@ -11,13 +11,14 @@ interface State {
   isRefreshing: boolean;
 }
 
-const setCommonState = (
-  state: State,
-  action: PayloadAction<{
+interface Payload {
+  payload: {
     user: { name: string; email: string };
     token: string;
-  }>
-) => {
+  };
+}
+
+const setCommonState = (state: State, action: Payload) => {
   state.isLoggedIn = true;
   state.user.name = action.payload.user.name;
   state.user.email = action.payload.user.email;

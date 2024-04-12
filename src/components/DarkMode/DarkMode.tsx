@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import style from "./DarkMode.module.scss";
 import { useSelector } from "react-redux";
-import { selectThemeMode } from "../../redux/theme/selectors";
+import { selectThemeMode } from "../../redux/data/selectors";
 
 const DarkMode = () => {
   const isDarkModeOn = useSelector(selectThemeMode);

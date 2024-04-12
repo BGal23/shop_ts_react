@@ -40,7 +40,8 @@ const NavMenu: React.FC<Props> = ({ setIsModalOpen }) => {
               ) : (
                 <NavLink
                   onClick={() => {
-                    setIsModalOpen(false), dispatch(logout());
+                    setIsModalOpen(false);
+                    dispatch(logout());
                   }}
                   to={link.link}
                 >
