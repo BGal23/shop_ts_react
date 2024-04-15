@@ -1,17 +1,20 @@
 import { Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { selectCart, selectThemeMode } from "../../redux/data/selectors";
+import { themeMode } from "../../redux/data/themeSlice";
+import icons from "../../images/svg/icons.svg";
 import Container from "../Container/Container";
 import DarkMode from "../DarkMode/DarkMode";
 import style from "./Header.module.scss";
-import { useState } from "react";
 import MenuModal from "../MenuModal/MenuModal";
-import { useMediaQuery } from "react-responsive";
+import CartModal from "../CartModal/CartModal";
 import NavMenu from "../NavMenu/NavMenu";
-import { themeMode } from "../../redux/data/themeSlice";
-import { selectCart, selectThemeMode } from "../../redux/data/selectors";
 
 const Header = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isMenuModalOpen, setIsMenuModalOpen] = useState<boolean>(false);
+  const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
   const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
   const isDarkModeOn = useSelector(selectThemeMode);
   const cartCount = useSelector(selectCart);
@@ -22,7 +25,12 @@ const Header = () => {
         <Container>
           <div className={style.header}>
             <Link to="/">
-              <div className={style.logo}>👜 SHOP</div>
+              <div className={style.logo}>
+                <svg className={style.icon}>
+                  <use xlinkHref={`${icons}#bag`} />
+                </svg>
+                <span>FAKE SHOP</span>
+              </div>
             </Link>
             <div className={style.rightContainer}>
               <button
@@ -30,23 +38,41 @@ const Header = () => {
                 className={style.themeBtn}
                 onClick={() => dispatch(themeMode())}
               >
-                {isDarkModeOn ? "☀️" : "🌑"}
+                <svg className={style.icon}>
+                  {isDarkModeOn ? (
+                    <use xlinkHref={`${icons}#sun`} />
+                  ) : (
+                    <use xlinkHref={`${icons}#moon`} />
+                  )}
+                </svg>
               </button>
-              <Link className={style.cartLink} to="/user">
-                🛒
-                {cartCount && (
+              <button
+                type="button"
+                className={style.cartBtn}
+                onClick={() => setIsCartModalOpen(!isCartModalOpen)}
+              >
+                <svg className={style.icon}>
+                  <use xlinkHref={`${icons}#cart`} />
+                </svg>
+                {cartCount.length > 0 && (
                   <div className={style.count}>{cartCount.length}</div>
                 )}
-              </Link>
+              </button>
               {isMobile ? (
                 <button
-                  onClick={() => setIsModalOpen(!isModalOpen)}
+                  onClick={() => setIsMenuModalOpen(!isMenuModalOpen)}
                   className={style.homeBtn}
                 >
-                  {isModalOpen ? "CLOSE" : "MENU"}
+                  <svg className={style.icon}>
+                    {isMenuModalOpen ? (
+                      <use xlinkHref={`${icons}#close`} />
+                    ) : (
+                      <use xlinkHref={`${icons}#menu`} />
+                    )}
+                  </svg>
                 </button>
               ) : (
-                <NavMenu setIsModalOpen={setIsModalOpen} />
+                <NavMenu setIsMenuModalOpen={setIsMenuModalOpen} />
               )}
             </div>
           </div>
@@ -58,8 +84,15 @@ const Header = () => {
         </Container>
       </main>
       {isMobile && (
-        <MenuModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <MenuModal
+          isMenuModalOpen={isMenuModalOpen}
+          setIsMenuModalOpen={setIsMenuModalOpen}
+        />
       )}
+      <CartModal
+        isCartModalOpen={isCartModalOpen}
+        setIsCartModalOpen={setIsCartModalOpen}
+      />
       <DarkMode />
     </>
   );

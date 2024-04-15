@@ -17,6 +17,13 @@ export interface Product {
   };
 }
 
+export interface ProductToCart {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+}
+
 interface Props {
   id: number;
 }
@@ -33,8 +40,17 @@ const Product = ({ id }: Props) => {
     setProduct(await getProduct(id));
   };
 
-  const addToCart = () => {
-    dispatch(addProduct(product));
+  const addToCart = async () => {
+    let productToCart: ProductToCart;
+    if (product) {
+      productToCart = {
+        id: product.id,
+        title: product.title,
+        quantity: 1,
+        price: product.price,
+      };
+      dispatch(addProduct(productToCart));
+    }
   };
 
   return (

@@ -2,9 +2,17 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
-  color: var(--color);
+  color: var(--font-main-color);
+  font-weight: 600;
 
   @media screen and (max-width: 767px) {
     flex-direction: column;
   }
+}
+
+.logout {
+  color: var(--red-activate);
+  padding: 5px 5px 0 5px;
+  border: 2px solid var(--red-activate);
+  border-radius: 0.5em;
 }

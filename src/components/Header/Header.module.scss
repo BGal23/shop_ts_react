@@ -8,6 +8,7 @@
   z-index: 4;
 }
 
+.cartBtn,
 .homeBtn,
 .themeBtn {
   background-color: transparent;
@@ -20,11 +21,30 @@
   gap: 10px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+
+  & span {
+    margin-top: 0.25em;
+    font-size: 1.5em;
+  }
+}
+
 .count {
   position: absolute;
   z-index: 2;
-  width: 1em;
-  height: 1em;
-  border-radius: 0.5em;
-  background-color: red;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 0.75em;
+  background-color: var(--red-activate);
+  color: var(--font-main-color);
+  transform: translate(1em, -1em);
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+  fill: var(--font-main-color);
 }

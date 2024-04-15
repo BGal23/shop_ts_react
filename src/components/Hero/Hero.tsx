@@ -21,7 +21,7 @@ const Hero = () => {
         <Slider {...settings}>
           {gallery.map((image, index) => (
             <div className={style.gallery} key={index}>
-              <img src={image.src} alt={image.alt} />
+              <img src={image.src} alt={image.alt} width="100%" />
             </div>
           ))}
         </Slider>

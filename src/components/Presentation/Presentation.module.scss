@@ -25,7 +25,8 @@
 .liContainer {
   width: calc(100% - 4px);
   height: 25em;
-  border: 2px solid black;
+  border: 1px solid var(--font-main-color);
+  border-radius: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;

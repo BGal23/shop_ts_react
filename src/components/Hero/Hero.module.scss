@@ -1,16 +1,22 @@
 .container {
-  height: 32em;
+  height: 17em;
+
+  @media screen and (min-width: 767px) {
+    height: 30em;
+  }
 }
 
 .box {
   width: 100vw;
-  height: 30em;
   position: absolute;
   left: 0;
 }
 
 .gallery {
-  width: 100%;
-  height: 30em;
-  object-fit: fill;
+  width: 100vh;
+  height: 13em;
+
+  @media screen and (min-width: 767px) {
+    height: 27em;
+  }
 }

@@ -2,19 +2,22 @@ import NavMenu from "../NavMenu/NavMenu";
 import style from "./MenuModal.module.scss";
 
 interface Props {
-  isModalOpen: boolean;
-  setIsModalOpen: (isOpenModal: boolean) => void;
+  isMenuModalOpen: boolean;
+  setIsMenuModalOpen: (isOpenModal: boolean) => void;
 }
 
-const MenuModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen }) => {
+const MenuModal: React.FC<Props> = ({
+  isMenuModalOpen,
+  setIsMenuModalOpen,
+}) => {
   return (
     <div
       className={style.container}
       style={{
-        left: isModalOpen ? undefined : "100vw",
+        left: isMenuModalOpen ? undefined : "100vw",
       }}
     >
-      <NavMenu setIsModalOpen={setIsModalOpen} />
+      <NavMenu setIsMenuModalOpen={setIsMenuModalOpen} />
     </div>
   );
 };

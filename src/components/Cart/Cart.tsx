@@ -10,16 +10,18 @@ const Cart = () => {
     id: number;
     title: string;
     price: number;
+    quantity: number;
   }
 
   return (
     <div>
       <h2>Your Cart</h2>
       <ul>
-        {cart.map((product: Cart) => (
+        {cart.map((product) => (
           <li key={product.id}>
             <div>{product.title}</div>
-            <div>Price: {product.price} $</div>
+            <div>Quantity: {product.quantity}</div>
+            <div>Price: {product.quantity * product.price} $</div>
             <button
               type="button"
               onClick={() => dispatch(deleteProduct(product.id))}
@@ -33,7 +35,7 @@ const Cart = () => {
         <h3>Price of all products</h3>
         <p>
           {cart.reduce((total: number, product: Cart) => {
-            return Number(total) + Number(product.price);
+            return Number(total) + Number(product.quantity * product.price);
           }, 0)}
           $
         </p>

@@ -7,18 +7,16 @@ import { logout } from "../../redux/auth/operations";
 import links from "./links";
 
 interface Props {
-  setIsModalOpen: (isOpenModal: boolean) => void;
+  setIsMenuModalOpen: (isOpenModal: boolean) => void;
 }
 
 const StyledLink = styled(NavLink)`
-  color: black;
-
   &.active {
-    color: orange;
+    text-decoration: underline;
   }
 `;
 
-const NavMenu: React.FC<Props> = ({ setIsModalOpen }) => {
+const NavMenu: React.FC<Props> = ({ setIsMenuModalOpen }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
@@ -32,15 +30,16 @@ const NavMenu: React.FC<Props> = ({ setIsModalOpen }) => {
             <li key={link.index}>
               {!link.logout ? (
                 <StyledLink
-                  onClick={() => setIsModalOpen(false)}
+                  onClick={() => setIsMenuModalOpen(false)}
                   to={link.link}
                 >
                   {link.name ? link.name : userName}
                 </StyledLink>
               ) : (
                 <NavLink
+                  className={style.logout}
                   onClick={() => {
-                    setIsModalOpen(false);
+                    setIsMenuModalOpen(false);
                     dispatch(logout());
                   }}
                   to={link.link}

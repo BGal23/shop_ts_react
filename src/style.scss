@@ -1,11 +1,7 @@
 @import "./assets/colors.scss";
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Karma, system-ui;
 }
 
 body {
@@ -16,7 +12,8 @@ body {
 }
 
 header {
-  background-color: dodgerblue;
+  background-color: rgb(125, 176, 217);
+  border-bottom: 1px solid var(--font-main-color);
 }
 
 ul {
@@ -27,4 +24,8 @@ ul {
 a {
   text-decoration: none;
   color: var(--font-main-color);
+}
+button {
+  padding: 0;
+  cursor: pointer;
 }
