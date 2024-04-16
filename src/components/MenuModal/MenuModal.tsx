@@ -14,7 +14,7 @@ const MenuModal: React.FC<Props> = ({
     <div
       className={style.container}
       style={{
-        left: isMenuModalOpen ? undefined : "100vw",
+        left: isMenuModalOpen ? undefined : "105vw",
       }}
     >
       <NavMenu setIsMenuModalOpen={setIsMenuModalOpen} />

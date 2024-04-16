@@ -2,10 +2,35 @@ import { Link, useLocation } from "react-router-dom";
 import style from "./Presentation.module.scss";
 import { useSelector } from "react-redux";
 import { selectCategoriesName } from "../../redux/data/selectors";
+import electronics from "../../images/picture/electronic.png";
+import jewelery from "../../images/picture/jewelery.png";
+import menClothing from "../../images/picture/men_clothing.png";
+import womenClothing from "../../images/picture/women_clothing.png";
 
 const Presentation = () => {
   const location = useLocation();
-  const categories = useSelector(selectCategoriesName);
+  const categoriesName = useSelector(selectCategoriesName);
+
+  interface Category {
+    id: number;
+    name: string;
+    src: string | boolean;
+    description: string;
+  }
+
+  const categories: Category[] = categoriesName.map((name, index) => {
+    return {
+      id: index,
+      name,
+      src:
+        (index === 0 && electronics) ||
+        (index === 1 && jewelery) ||
+        (index === 2 && menClothing) ||
+        (index === 3 && womenClothing),
+      description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum molestias magni quae dignissimos repellat eaque? Illo quis temporibus asperiores adipisci nulla, nisi dolorum sapiente minima est? Asperiores at adipisci fugit quisquam illum.",
+    };
+  });
 
   return (
     <div className={style.container}>
@@ -13,15 +38,20 @@ const Presentation = () => {
         <Link to="/categories">CATEGORIES</Link>
       </h2>
       <ul className={style.ulContainer}>
-        {categories.map((category, index) => (
+        {categories.map((category) => (
           <Link
-            key={index}
-            to={`/categories/${category}`}
+            key={category.id}
+            to={`/categories/${category.name}`}
             state={{ from: location }}
           >
             <li className={style.liContainer}>
-              <h3>{category.toUpperCase()}</h3>
-              <div>#photo</div>
+              <div className={style.categoryName}>
+                <h3>{category.name.toUpperCase()}</h3>
+              </div>
+              <div className={style.imageContainer}>
+                <img className={style.image} src={category.src} />
+                <div className={style.description}>{category.description}</div>
+              </div>
             </li>
           </Link>
         ))}

@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import Product from "../../components/Product/Product";
+import GoBackBtn from "../../components/GoBackBtn/GoBackBtn";
 
 const OneProduct = () => {
   const location = useLocation();
@@ -8,7 +9,9 @@ const OneProduct = () => {
 
   return (
     <div>
-      <Link to={goBackLink}>Go back</Link>
+      <Link to={goBackLink}>
+        <GoBackBtn />
+      </Link>
       <Product id={productId} />
     </div>
   );

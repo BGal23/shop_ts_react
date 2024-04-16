@@ -1,5 +1,6 @@
 import Cart from "../Cart/Cart";
 import style from "./CartModal.module.scss";
+import icons from "../../images/svg/icons.svg";
 
 interface Props {
   isCartModalOpen: boolean;
@@ -11,13 +12,27 @@ const CartModal: React.FC<Props> = ({
   setIsCartModalOpen,
 }) => {
   return (
-    <div
-      className={style.container}
-      style={{
-        left: isCartModalOpen ? undefined : "100vw",
-      }}
-    >
-      <Cart />
+    <div className={isCartModalOpen ? style.backGround : ""}>
+      <div
+        className={style.container}
+        style={{
+          left: isCartModalOpen ? undefined : "105vw",
+        }}
+      >
+        <div className={style.box}>
+          <h2>Shopping Cart</h2>
+          <button
+            className={style.closeBtn}
+            onClick={() => setIsCartModalOpen(false)}
+            type="button"
+          >
+            <svg className={style.icon}>
+              <use xlinkHref={`${icons}#close`} />
+            </svg>
+          </button>
+        </div>
+        <Cart />
+      </div>
     </div>
   );
 };

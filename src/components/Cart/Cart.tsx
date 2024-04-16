@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectCart } from "../../redux/data/selectors";
 import { deleteProduct } from "../../redux/data/cartSlice";
+import style from "./Cart.module.scss";
 
 const Cart = () => {
   const cart = useSelector(selectCart);
@@ -14,8 +15,7 @@ const Cart = () => {
   }
 
   return (
-    <div>
-      <h2>Your Cart</h2>
+    <div className={style.container}>
       <ul>
         {cart.map((product) => (
           <li key={product.id}>

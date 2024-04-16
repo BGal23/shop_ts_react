@@ -36,13 +36,18 @@ const Category = ({ category, limit }: Props) => {
           <li className={style.liContainer} key={product.id}>
             <Link to={`/product/${product.id}`} state={{ from: location }}>
               <h3 className={style.title}>{product.title}</h3>
-              <img
-                className={style.image}
-                src={product.image}
-                alt={product.title}
-              />
-              <h3>Price {product.price} $</h3>
+              <div className={style.imageBox}>
+                <img
+                  className={style.image}
+                  src={product.image}
+                  alt={product.title}
+                />
+              </div>
             </Link>
+            <div className={style.box}>
+              <h3>Price {product.price} $</h3>
+              <button>Add to cart</button>
+            </div>
           </li>
         ))}
       </ul>

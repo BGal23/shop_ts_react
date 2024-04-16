@@ -14,7 +14,7 @@ const Benefits = () => {
               <svg className={style.icon}>
                 <use xlinkHref={`${icons}${item.icon}`} />
               </svg>
-              <p>{item.description}</p>
+              <p className={style.description}>{item.description}</p>
             </div>
           </li>
         ))}

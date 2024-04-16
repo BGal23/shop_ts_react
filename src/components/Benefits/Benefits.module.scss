@@ -1,4 +1,5 @@
 .container {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +9,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -20,10 +22,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+
+  // &:hover ::after {
+  //   content: "";
+  //   display: block;
+  //   position: absolute;
+  //   margin: 2em 2em 0 0;
+  //   width: 8em;
+  //   height: 8em;
+  //   border-radius: 3em;
+  //   background-color: rgba(0, 0, 0, 0.5);
+  // }
 }
 
 .icon {
-  width: 160px;
-  height: 180px;
-  fill: black;
+  object-fit: cover;
+  object-position: right;
+  width: 100%;
+  height: 10em;
+  fill: var(--font-main-color);
+}
+
+.description {
+  width: calc(100% - 2em);
+  padding: 1em;
+  text-align: center;
 }

@@ -9,11 +9,13 @@ body {
   overflow-x: visible;
   background-color: var(--background-main-color);
   color: var(--font-main-color);
+  overflow-x: hidden;
 }
 
 header {
-  background-color: rgb(125, 176, 217);
+  background-color: var(--header-color);
   border-bottom: 1px solid var(--font-main-color);
+  z-index: 4;
 }
 
 ul {
