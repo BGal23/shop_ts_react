@@ -7,3 +7,38 @@
     width: 38em;
   }
 }
+
+.product {
+  margin-bottom: 1.5em;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.3em;
+}
+
+.buttonsBox {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: large;
+  color: var(--font-main-color);
+}
+
+.priceBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & h3 {
+    font-size: x-large;
+    margin: 0;
+  }
+}

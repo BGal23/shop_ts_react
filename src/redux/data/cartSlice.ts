@@ -23,6 +23,12 @@ const cartSlice = createSlice({
         state.products[index].quantity++;
       }
     },
+    minusProduct: (state, action) => {
+      const index: number = state.products.findIndex(
+        (product) => product.id === action.payload.id
+      );
+      state.products[index].quantity--;
+    },
     deleteProduct: (state, action) => {
       const index: number = state.products.findIndex(
         (product) => product.id === action.payload
@@ -32,5 +38,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addProduct, deleteProduct } = cartSlice.actions;
+export const { addProduct, deleteProduct, minusProduct } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;
