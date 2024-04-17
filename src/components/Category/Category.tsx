@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import getCategory from "../../api/category";
 import style from "./Category.module.scss";
 import { Link, useLocation } from "react-router-dom";
+import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   price: number;
@@ -35,7 +36,9 @@ const Category = ({ category, limit }: Props) => {
         {products.map((product) => (
           <li className={style.liContainer} key={product.id}>
             <Link to={`/product/${product.id}`} state={{ from: location }}>
-              <h3 className={style.title}>{product.title}</h3>
+              <div className={style.titleBox}>
+                <h3 className={style.title}>{product.title}</h3>
+              </div>
               <div className={style.imageBox}>
                 <img
                   className={style.image}
@@ -46,7 +49,7 @@ const Category = ({ category, limit }: Props) => {
             </Link>
             <div className={style.box}>
               <h3>Price {product.price} $</h3>
-              <button>Add to cart</button>
+              <AddToCartBtn product={product} />
             </div>
           </li>
         ))}

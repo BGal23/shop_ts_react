@@ -2,9 +2,9 @@
   position: absolute;
   z-index: 2;
   background-color: var(--background-main-color);
-  left: 30vw;
+  left: calc(100% - 10em);
   top: 4em;
-  width: 65vw;
+  width: 55vw;
   transition: left 0.3s ease;
   border: 1px solid var(--font-main-color);
   border-radius: 2em 0 2em 2em;

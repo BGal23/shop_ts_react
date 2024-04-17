@@ -26,6 +26,7 @@
   width: calc(100% - 1em - 4px);
   height: 25em;
   border: 1px solid var(--font-main-color);
+  border-top: 2px solid var(--font-main-color);
   margin-left: 1em;
   border-radius: 2em;
   display: flex;
@@ -44,7 +45,7 @@
   height: 4em;
   background-color: var(--header-color);
   text-align: center;
-  border-bottom: 1px solid var(--font-main-color);
+  border-bottom: 2px solid var(--font-main-color);
 }
 
 .imageContainer {

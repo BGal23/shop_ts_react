@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-// import style from "./Product.module.scss";
+import style from "./Product.module.scss";
 import { getProduct } from "../../api/product";
-import { addProduct } from "../../redux/data/cartSlice";
-import { useDispatch } from "react-redux";
+import Stars from "../Stars/Stars";
+import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
+import BuyNowBtn from "../BuyNowBtn/BuyNowBtn";
 
 export interface Product {
   id: number;
@@ -30,7 +31,6 @@ interface Props {
 
 const Product = ({ id }: Props) => {
   const [product, setProduct] = useState<Product>();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     showProduct();
@@ -40,35 +40,39 @@ const Product = ({ id }: Props) => {
     setProduct(await getProduct(id));
   };
 
-  const addToCart = async () => {
-    let productToCart: ProductToCart;
-    if (product) {
-      productToCart = {
-        id: product.id,
-        title: product.title,
-        quantity: 1,
-        price: product.price,
-      };
-      dispatch(addProduct(productToCart));
-    }
-  };
-
   return (
-    <div>
+    <>
       {product && (
-        <div>
+        <>
           <h2>{product.title}</h2>
-          <img src={product.image} />
-          <h3>Price: {product.price} $</h3>
-          <h3>Rate: {product.rating.rate}</h3>
-          <h3>Count: {product.rating.count}</h3>
-          <p>{product.description}</p>
-        </div>
+          <div className={style.container}>
+            <div className={style.imageBox}>
+              <img className={style.image} src={product.image} />
+            </div>
+            <div>
+              <span className={style.item}>
+                <h3>Price: {product.price} $</h3>
+                <AddToCartBtn product={product} />
+              </span>
+              <span className={style.item}>
+                <h3>Rate: {product.rating.rate}</h3>
+                <Stars rate={product.rating.rate} />
+              </span>
+              <span className={style.item}>
+                <h3>Count: {product.rating.count}</h3>
+                <BuyNowBtn />
+              </span>
+            </div>
+          </div>
+          <div className={style.description}>
+            <div className={style.titleBox}>
+              <h3>Description</h3>
+            </div>
+            <p>{product.description}</p>
+          </div>
+        </>
       )}
-      <button type="button" onClick={addToCart}>
-        Add to cart
-      </button>
-    </div>
+    </>
   );
 };
 

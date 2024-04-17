@@ -1,9 +1,9 @@
 .container {
-  width: calc(85vw - 2em);
+  width: 18em;
   @media screen and (min-width: 768px) {
-    width: calc(60vw - 2em);
+    width: 28em;
   }
   @media screen and (min-width: 1280px) {
-    width: calc(40vw - 2em);
+    width: 38em;
   }
 }

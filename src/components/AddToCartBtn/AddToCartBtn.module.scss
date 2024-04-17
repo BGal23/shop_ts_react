@@ -1,0 +1,29 @@
+.button {
+  border: 2px solid var(--font-main-color);
+  border-radius: 0.5em;
+  padding: 0.3em 0.8em;
+  background-color: transparent;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--font-main-color);
+}
+
+.icon {
+  width: 2em;
+  height: 2em;
+  fill: var(--font-main-color);
+  stroke: var(--font-main-color);
+}
+
+.addMore {
+  border: 2px solid var(--red-activate);
+  color: var(--red-activate);
+
+  & svg {
+    fill: transparent;
+    stroke: var(--red-activate);
+  }
+}

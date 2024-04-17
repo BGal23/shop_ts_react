@@ -6,42 +6,42 @@
   margin: 0;
 
   & li {
-    min-width: calc(100% - 2px - 2em);
+    min-width: calc(100% - 2px);
     @media screen and (min-width: 767px) {
-      min-width: calc((100% - 4px - 7em) / 2);
+      min-width: calc((100% - 4px - 3em) / 2);
     }
     @media screen and (min-width: 1279px) {
-      min-width: calc((100% - 6px - 12em) / 3);
+      min-width: calc((100% - 6px - 6em) / 3);
     }
   }
 }
 
 .ulContainerMore {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3em;
+  margin: 0;
   @media screen and (min-width: 767px) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3em;
-    margin: 0;
-
     & li {
-      width: calc((100% - 4px - 7em) / 2);
+      width: calc((100% - 4px - 3em) / 2);
     }
   }
   @media screen and (min-width: 1279px) {
     & li {
-      width: calc((100% - 6px - 12em) / 3);
+      width: calc((100% - 6px - 6em) / 3);
     }
   }
 }
 
 .liContainer {
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 2px - 2em);
-  padding: 0 1em 0;
+  width: calc(100% - 2px);
   border: 1px solid var(--font-main-color);
+  border-top: 2px solid var(--font-main-color);
   border-radius: 2em;
   background-color: white;
 
@@ -68,14 +68,27 @@
 
 .box {
   width: 100%;
-  height: 2em;
+  height: 3em;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin-bottom: 1em;
-  border-top: 1px solid var(--font-main-color);
+  padding: 0.5em 0;
+  border: 1px solid var(--font-main-color);
+  border-radius: 2em;
+  background-color: var(--background-main-color);
+}
+
+.titleBox {
+  background-color: var(--header-color);
+  padding: 1em;
+  min-height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--font-main-color);
 }
 
 .title {
+  margin: 0 0.5em 0 0.5em;
   text-align: center;
 }

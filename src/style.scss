@@ -12,6 +12,9 @@ body {
   overflow-x: hidden;
 }
 
+::-webkit-scrollbar-thumb {
+  background-color: var(--font-main-color);
+}
 header {
   background-color: var(--header-color);
   border-bottom: 1px solid var(--font-main-color);
