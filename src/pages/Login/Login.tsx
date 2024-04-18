@@ -1,25 +1,22 @@
-import { useDispatch } from "react-redux";
-import { login } from "../../redux/auth/operations";
+import LogForm from "../../components/LogForm/LogForm";
+
+export interface Login {
+  target: {
+    name: {
+      value: string;
+    };
+    password: {
+      value: string;
+    };
+    email: {
+      value: string;
+    };
+  };
+  preventDefault: () => void;
+}
 
 const Login = () => {
-  const dispatch = useDispatch();
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    return dispatch(login({ email, password }));
-  };
-
-  return (
-    <form onSubmit={handleLogin}>
-      <input type="email" name="email" />
-      <br />
-      <input type="password" name="password" autoComplete="off" />
-      <br />
-      <button>login</button>
-    </form>
-  );
+  return <LogForm isLogin={true} />;
 };
 
 export default Login;

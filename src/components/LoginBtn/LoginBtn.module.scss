@@ -1,0 +1,18 @@
+.button {
+  display: flex;
+  align-items: center;
+  color: var(--font-main-color);
+  max-width: 7em;
+  border: 2px solid var(--font-main-color);
+  border-radius: 0.5em;
+  font-weight: 600;
+  font-size: medium;
+  padding: 0.5em;
+  background-color: transparent;
+}
+
+.icon {
+  width: 1.5em;
+  height: 1.5em;
+  fill: var(--font-main-color);
+}
