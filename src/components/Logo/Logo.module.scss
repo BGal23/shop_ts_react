@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon {
+  width: 14em;
+  height: 14em;
+  stroke: var(--font-main-color);
+}
+
+.title {
+  margin-top: 0.3em;
+  font-size: 5em;
+  font-weight: 600;
+  line-height: 1.4em;
+  text-shadow: -0.07em 0.07em 0 var(--shadow-color);
+}

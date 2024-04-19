@@ -4,6 +4,7 @@
   overflow-x: auto;
   gap: 3em;
   margin: 0;
+  padding: 0 0 0.5em 0.5em;
 
   & li {
     min-width: calc(100% - 2px);
@@ -44,6 +45,8 @@
   border-top: 2px solid var(--font-main-color);
   border-radius: 2em;
   background-color: white;
+
+  box-shadow: -0.5em 0.5em 0 0 var(--shadow-color);
 
   & a {
     width: 100%;
