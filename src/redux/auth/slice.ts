@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { register, login, logout, refreshUser } from "./operations";
 
-interface State {
+export interface State {
   isLoggedIn: boolean;
   user: {
     name: string | null;

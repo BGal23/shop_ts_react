@@ -14,7 +14,7 @@ const Presentation = () => {
   interface Category {
     id: number;
     name: string;
-    src: string | boolean;
+    src: string;
     description: string;
   }
 
@@ -26,7 +26,7 @@ const Presentation = () => {
         (index === 0 && electronics) ||
         (index === 1 && jewelery) ||
         (index === 2 && menClothing) ||
-        (index === 3 && womenClothing),
+        womenClothing,
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum molestias magni quae dignissimos repellat eaque? Illo quis temporibus asperiores adipisci nulla, nisi dolorum sapiente minima est? Asperiores at adipisci fugit quisquam illum.",
     };

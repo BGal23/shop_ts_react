@@ -1,9 +1,13 @@
 import style from "./LoginBtn.module.scss";
 import icons from "../../images/svg/icons.svg";
 
-const LoginBtn = ({ handleLogin, name }) => {
+interface Props {
+  name: string;
+}
+
+const LoginBtn: React.FC<Props> = ({ name }) => {
   return (
-    <button onSubmit={handleLogin} type="submit" className={style.button}>
+    <button type="submit" className={style.button}>
       <span>{name}</span>
       <svg className={style.icon}>
         <use xlinkHref={`${icons}#login`} />

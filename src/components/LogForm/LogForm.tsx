@@ -1,30 +1,37 @@
 import style from "./LogForm.module.scss";
+import { UnknownAction } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { login, register } from "../../redux/auth/operations";
 import { Link } from "react-router-dom";
 import LoginBtn from "../LoginBtn/LoginBtn";
-import { useState } from "react";
-import { Login } from "../../pages/Login/Login";
+import { FormEvent, useState } from "react";
 
-const LogForm = ({ isLogin }) => {
+interface Props {
+  isLogin: boolean;
+}
+
+const LogForm: React.FC<Props> = ({ isLogin }) => {
   const [checkName, setCheckName] = useState<string>("");
   const [checkEmail, setCheckEmail] = useState<string>("");
   const [checkPassword, setCheckPassword] = useState<string>("");
   const [isValidateOn, setIsValidateOn] = useState<boolean>(false);
   const dispatch = useDispatch();
 
-  const handleLogin = (event: Login) => {
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const name = event.target.name.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
 
     setIsValidateOn(true);
 
     if (isLogin) {
-      return dispatch(login({ email, password }));
+      return dispatch(login({ email, password }) as unknown as UnknownAction);
     } else {
-      return dispatch(register({ name, email, password }));
+      return dispatch(
+        register({ name, email, password }) as unknown as UnknownAction
+      );
     }
   };
 
@@ -84,10 +91,7 @@ const LogForm = ({ isLogin }) => {
             </label>
           </div>
           <span className={style.buttonBox}>
-            <LoginBtn
-              onSubmit={handleLogin}
-              name={isLogin ? "LOGIN" : "SIGN UP"}
-            />
+            <LoginBtn name={isLogin ? "LOGIN" : "SIGN UP"} />
             <Link to={isLogin ? "/signup" : "/login"}>
               {isLogin ? "GO SIGN UP" : "GO LOGIN"}
             </Link>

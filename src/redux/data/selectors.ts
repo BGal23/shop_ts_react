@@ -1,6 +1,6 @@
-import Category from "./categorySlice";
-import Cart from "./cartSlice";
-import Theme from "./themeSlice";
+import { Category } from "./categorySlice";
+import { Cart } from "./cartSlice";
+import { Theme } from "./themeSlice";
 
 interface State {
   theme: Theme;

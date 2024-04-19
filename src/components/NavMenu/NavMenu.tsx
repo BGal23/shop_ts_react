@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { UnknownAction } from "@reduxjs/toolkit";
 import styled from "styled-components";
 import style from "./NavMenu.module.scss";
 import { useSelector, useDispatch } from "react-redux";
@@ -40,7 +41,7 @@ const NavMenu: React.FC<Props> = ({ setIsMenuModalOpen }) => {
                   className={style.logout}
                   onClick={() => {
                     setIsMenuModalOpen(false);
-                    dispatch(logout());
+                    dispatch(logout() as unknown as UnknownAction);
                   }}
                   to={link.link}
                 >

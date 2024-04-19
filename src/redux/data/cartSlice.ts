@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ProductToCart } from "../../components/Product/Product";
 
-export default interface Cart {
+export interface Cart {
   products: ProductToCart[];
 }
 

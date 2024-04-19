@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { getCategoriesName } from "./redux/data/operations";
+import { UnknownAction } from "@reduxjs/toolkit";
 
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
@@ -23,8 +24,8 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshUser());
-    dispatch(getCategoriesName());
+    dispatch(refreshUser() as unknown as UnknownAction);
+    dispatch(getCategoriesName() as unknown as UnknownAction);
   }, [dispatch]);
 
   if (isRefreshing) {

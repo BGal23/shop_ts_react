@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getCategoriesName } from "./operations";
 
-export default interface Category {
+export interface Category {
   categoriesName: string[];
 }
 

@@ -1,13 +1,7 @@
-interface Auth {
-  auth: {
-    isLoggedIn: boolean;
-    user: {
-      name: string | null;
-      email: string | null;
-    };
-    token: string | null;
-    isRefreshing: boolean;
-  };
+import { State } from "./slice";
+
+export interface Auth {
+  auth: State;
 }
 
 export const selectIsLoggedIn = (state: Auth): boolean => state.auth.isLoggedIn;

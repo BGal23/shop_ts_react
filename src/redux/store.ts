@@ -1,32 +1,39 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { Reducer, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 import { authReducer } from "./auth/slice";
 import { themeReducer } from "./data/themeSlice";
 import { categoryReducer } from "./data/categorySlice";
 import { cartReducer } from "./data/cartSlice";
+import { Storage } from "redux-persist/es/types";
+import storage from "redux-persist/lib/storage";
 
-const authPersistConfig = {
+interface Persist {
+  key: string;
+  storage: Storage;
+  whitelist?: string[];
+}
+
+const authPersistConfig: Persist = {
   key: "auth",
   storage: storage,
   whitelist: ["token"],
 };
 
-const themePersistConfig = {
+const themePersistConfig: Persist = {
   key: "theme",
   storage: storage,
 };
 
-const cartPersistConfig = {
+const cartPersistConfig: Persist = {
   key: "cart",
   storage: storage,
 };
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    theme: persistReducer(themePersistConfig, themeReducer),
-    cart: persistReducer(cartPersistConfig, cartReducer),
+    auth: persistReducer(authPersistConfig, authReducer) as Reducer,
+    theme: persistReducer(themePersistConfig, themeReducer) as Reducer,
+    cart: persistReducer(cartPersistConfig, cartReducer) as Reducer,
     category: categoryReducer,
   },
 

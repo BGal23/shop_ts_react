@@ -1,7 +1,5 @@
-import Cart from "../../components/Cart/Cart";
-
 const User = () => {
-  return <Cart />;
+  return <div>Coming soon</div>;
 };
 
 export default User;

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export default interface Theme {
+export interface Theme {
   darkMode: boolean;
 }
 
