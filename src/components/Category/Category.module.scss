@@ -51,6 +51,14 @@
   & a {
     width: 100%;
   }
+  & h3 {
+    text-decoration: transparent;
+  }
+
+  &:hover h3 {
+    transition: text-decoration 0.3s ease;
+    text-decoration: underline var(--font-main-color);
+  }
 }
 
 .imageBox {
@@ -89,9 +97,15 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid var(--font-main-color);
+  text-decoration: transparent;
 }
 
 .title {
   margin: 0 0.5em 0 0.5em;
   text-align: center;
+}
+
+.price {
+  font-weight: 800;
+  font-size: large;
 }

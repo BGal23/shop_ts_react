@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import Category from "../../components/Category/Category";
 import { Link, useLocation } from "react-router-dom";
 import { selectCategoriesName } from "../../redux/data/selectors";
+import style from "./Categories.module.scss";
 
 const Categories = () => {
   const location = useLocation();
@@ -13,7 +14,11 @@ const Categories = () => {
       {categories.map((category, index) => (
         <div key={index}>
           <h2>
-            <Link to={`${category}`} state={{ from: location }}>
+            <Link
+              className={style.title}
+              to={`${category}`}
+              state={{ from: location }}
+            >
               {category.toUpperCase()}
             </Link>
           </h2>

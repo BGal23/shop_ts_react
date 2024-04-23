@@ -1,0 +1,7 @@
+.title {
+  text-decoration: transparent;
+  transition: text-decoration 0.3s ease;
+  &:hover {
+    text-decoration: underline var(--font-main-color);
+  }
+}

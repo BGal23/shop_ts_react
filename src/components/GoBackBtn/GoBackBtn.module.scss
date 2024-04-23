@@ -7,6 +7,11 @@
   border-radius: 0.5em;
   margin-top: 1em;
   font-weight: 600;
+  transition: scale 0.3s ease;
+
+  &:hover {
+    scale: 1.1;
+  }
 
   & span {
     padding: 5px 5px 0 5px;

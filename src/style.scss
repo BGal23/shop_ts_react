@@ -4,17 +4,17 @@
   font-family: Karma, system-ui;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
-  overflow-x: visible;
   background-color: var(--background-main-color);
   color: var(--font-main-color);
   transition: background-color 0.3s ease;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--font-main-color);
-}
 header {
   background-color: var(--header-color);
   border-bottom: 1px solid var(--font-main-color);

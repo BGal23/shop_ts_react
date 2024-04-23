@@ -8,7 +8,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 3em;
 
   @media screen and (min-width: 768px) {
     display: grid;
@@ -37,6 +37,15 @@
 
   @media screen and (min-width: 1280px) {
     height: 20em;
+  }
+
+  & h3 {
+    text-decoration: transparent;
+  }
+
+  &:hover h3 {
+    transition: text-decoration 0.3s ease;
+    text-decoration: underline var(--font-main-color);
   }
 }
 
@@ -78,4 +87,12 @@
   text-align: justify;
   transform: translateY(100%);
   transition: transform 0.3s ease-in-out;
+}
+
+.title {
+  text-decoration: transparent;
+  transition: text-decoration 0.3s ease;
+  &:hover {
+    text-decoration: underline black;
+  }
 }

@@ -48,7 +48,7 @@ const Category = ({ category, limit }: Props) => {
               </div>
             </Link>
             <div className={style.box}>
-              <h3>Price {product.price} $</h3>
+              <p className={style.price}>Price {product.price} $</p>
               <AddToCartBtn product={product} />
             </div>
           </li>

@@ -92,7 +92,10 @@ const LogForm: React.FC<Props> = ({ isLogin }) => {
           </div>
           <span className={style.buttonBox}>
             <LoginBtn name={isLogin ? "LOGIN" : "SIGN UP"} />
-            <Link to={isLogin ? "/signup" : "/login"}>
+            <Link
+              className={style.goToPage}
+              to={isLogin ? "/signup" : "/login"}
+            >
               {isLogin ? "GO SIGN UP" : "GO LOGIN"}
             </Link>
           </span>
