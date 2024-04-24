@@ -1,0 +1,49 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
+}
+
+.text {
+  font-size: larger;
+  text-align: center;
+}
+
+.form {
+  width: 100%;
+}
+
+.checkboxBox {
+  display: flex;
+  align-items: start;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.input {
+  width: calc(100% - 2em);
+  height: 3em;
+  border: 1px solid var(--font-main-color);
+  border-bottom: 2px solid var(--font-main-color);
+  background-color: var(--background-main-color);
+  color: var(--font-main-color);
+  border-radius: 2em;
+  padding-left: 2em;
+}
+
+.regulations {
+  color: rgb(20, 20, 100);
+  text-decoration: underline;
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: right;
+  margin: 0 0.5em 0.5em 0;
+}

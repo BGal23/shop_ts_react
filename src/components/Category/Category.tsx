@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getCategory from "../../api/category";
+import getCategory from "../../api/category.ts";
 import style from "./Category.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";

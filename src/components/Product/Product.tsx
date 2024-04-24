@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import style from "./Product.module.scss";
-import { getProduct } from "../../api/product";
+import getProduct from "../../api/product.ts";
 import Stars from "../Stars/Stars";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 import BuyNowBtn from "../BuyNowBtn/BuyNowBtn";
