@@ -3,7 +3,7 @@ import icons from "../../images/svg/icons.svg";
 
 const SendBtn = () => {
   return (
-    <button type="button" className={style.button}>
+    <button type="submit" className={style.button}>
       SEND
       <svg className={style.icon}>
         <use xlinkHref={`${icons}#send`} />
