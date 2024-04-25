@@ -1,0 +1,18 @@
+.checkboxBox {
+  display: flex;
+  align-items: start;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.regulations {
+  color: var(--link-font);
+  text-decoration: underline;
+}
+
+.warning {
+  width: 100%;
+  margin-top: 0.2em;
+  color: var(--red-activate);
+  text-align: end;
+}

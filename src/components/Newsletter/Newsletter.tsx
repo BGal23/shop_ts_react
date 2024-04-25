@@ -1,11 +1,8 @@
 import style from "./Newsletter.module.scss";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import Checkbox from "react-custom-checkbox";
-import * as Icon from "react-icons/fi";
 import SendBtn from "../SendBtn/SendBtn";
 import { FormEvent, useState } from "react";
 import codes from "../../assets/codes";
+import Regulation from "../Regulation/Regulation";
 
 const Newsletter = () => {
   const [checkEmail, setCheckEmail] = useState<string>("");
@@ -44,41 +41,11 @@ const Newsletter = () => {
             {checkEmail.length < 6 && isValidateOn && "Email is too short"}
           </div>
         </label>
-        <label className={style.checkboxBox}>
-          <Checkbox
-            name="checkbox"
-            icon={<Icon.FiCheck color="var(--font-main-color" size={20} />}
-            checked={false}
-            size={20}
-            borderColor="var(--font-main-color)"
-            borderWidth={1.5}
-            style={{
-              cursor: "pointer",
-              backgroundColor: "var(--background-main-color)",
-              marginLeft: "1em",
-            }}
-            labelStyle={{ marginLeft: 5, userSelect: "none" }}
-            onChange={(event: boolean) => setCheckCheckbox(event)}
-          />
-          <span>
-            <div>
-              I accept the{" "}
-              <a
-                className={style.regulations}
-                href={"/shop_ts_react/public/Regulation.pdf"}
-                target="_blank"
-              >
-                regulations
-              </a>{" "}
-              of this website
-            </div>
-            <div className={style.warning}>
-              {!checkCheckbox &&
-                isValidateOn &&
-                "You must accept the regulation"}
-            </div>
-          </span>
-        </label>
+        <Regulation
+          checkCheckbox={checkCheckbox}
+          isValidateOn={isValidateOn}
+          setCheckCheckbox={setCheckCheckbox}
+        />
         <div className={style.buttonBox}>
           <SendBtn />
         </div>

@@ -53,21 +53,27 @@ const Cart = () => {
           </li>
         ))}
       </ul>
-      <div>
-        <h3>Price of all products</h3>
-        <span className={style.priceBox}>
-          <h3>
-            {cart
-              .reduce((total: number, product: Cart) => {
-                return Number(total) + Number(product.quantity * product.price);
-              }, 0)
-              .toFixed(2)}{" "}
-            $
-          </h3>
+      {cart.length > 0 ? (
+        <div>
+          <h3>Price of all products</h3>
+          <span className={style.priceBox}>
+            <h3>
+              {cart
+                .reduce((total: number, product: Cart) => {
+                  return (
+                    Number(total) + Number(product.quantity * product.price)
+                  );
+                }, 0)
+                .toFixed(2)}{" "}
+              $
+            </h3>
 
-          <BuyNowBtn />
-        </span>
-      </div>
+            <BuyNowBtn />
+          </span>
+        </div>
+      ) : (
+        "Your shopping cart is empty"
+      )}
     </div>
   );
 };

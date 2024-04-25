@@ -19,13 +19,6 @@
   width: 100%;
 }
 
-.checkboxBox {
-  display: flex;
-  align-items: start;
-  gap: 1em;
-  margin-top: 1em;
-}
-
 .input {
   width: calc(100% - 2em);
   height: 3em;
@@ -37,20 +30,8 @@
   padding-left: 2em;
 }
 
-.regulations {
-  color: rgb(20, 20, 100);
-  text-decoration: underline;
-}
-
 .buttonBox {
   display: flex;
   justify-content: right;
   margin: 0 0.5em 0.5em 0;
-}
-
-.warning {
-  width: 100%;
-  margin-top: 0.2em;
-  color: var(--red-activate);
-  text-align: end;
 }

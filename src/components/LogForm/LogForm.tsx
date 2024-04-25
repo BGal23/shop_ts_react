@@ -5,6 +5,7 @@ import { login, register } from "../../redux/auth/operations";
 import { Link } from "react-router-dom";
 import LoginBtn from "../LoginBtn/LoginBtn";
 import { FormEvent, useState } from "react";
+import Regulation from "../Regulation/Regulation";
 
 interface Props {
   isLogin: boolean;
@@ -14,6 +15,7 @@ const LogForm: React.FC<Props> = ({ isLogin }) => {
   const [checkName, setCheckName] = useState<string>("");
   const [checkEmail, setCheckEmail] = useState<string>("");
   const [checkPassword, setCheckPassword] = useState<string>("");
+  const [checkCheckbox, setCheckCheckbox] = useState<boolean>(false);
   const [isValidateOn, setIsValidateOn] = useState<boolean>(false);
   const dispatch = useDispatch();
 
@@ -24,14 +26,26 @@ const LogForm: React.FC<Props> = ({ isLogin }) => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    setIsValidateOn(true);
-
     if (isLogin) {
-      return dispatch(login({ email, password }) as unknown as UnknownAction);
+      if (email && password) {
+        return (
+          dispatch(login({ email, password }) as unknown as UnknownAction),
+          setIsValidateOn(false)
+        );
+      } else {
+        return setIsValidateOn(true);
+      }
     } else {
-      return dispatch(
-        register({ name, email, password }) as unknown as UnknownAction
-      );
+      if (name && email && password && checkCheckbox) {
+        return (
+          dispatch(
+            register({ name, email, password }) as unknown as UnknownAction
+          ),
+          setIsValidateOn(false)
+        );
+      } else {
+        return setIsValidateOn(true);
+      }
     }
   };
 
@@ -89,6 +103,13 @@ const LogForm: React.FC<Props> = ({ isLogin }) => {
                   "Password is too short"}
               </div>
             </label>
+            {!isLogin && (
+              <Regulation
+                checkCheckbox={checkCheckbox}
+                isValidateOn={isValidateOn}
+                setCheckCheckbox={setCheckCheckbox}
+              />
+            )}
           </div>
           <span className={style.buttonBox}>
             <LoginBtn name={isLogin ? "LOGIN" : "SIGN UP"} />
