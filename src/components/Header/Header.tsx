@@ -11,6 +11,7 @@ import style from "./Header.module.scss";
 import MenuModal from "../MenuModal/MenuModal";
 import CartModal from "../CartModal/CartModal";
 import NavMenu from "../NavMenu/NavMenu";
+import Footer from "../Footer/Footer";
 
 const Header = () => {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState<boolean>(false);
@@ -83,6 +84,11 @@ const Header = () => {
           <Outlet />
         </Container>
       </main>
+      <footer>
+        <Container>
+          <Footer />
+        </Container>
+      </footer>
       {isMobile && (
         <MenuModal
           isMenuModalOpen={isMenuModalOpen}
