@@ -21,15 +21,8 @@
 .buttonsBox {
   display: flex;
   flex-direction: row;
-  gap: 0.5em;
-}
-
-.button {
-  border: none;
-  background-color: transparent;
-  font-weight: 600;
-  font-size: large;
-  color: var(--font-main-color);
+  align-items: center;
+  gap: 1.5em;
 }
 
 .priceBox {

@@ -4,6 +4,7 @@ import getProduct from "../../api/product.ts";
 import Stars from "../Stars/Stars";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 import BuyNowBtn from "../BuyNowBtn/BuyNowBtn";
+import Quantity from "../Quantity/Quantity.tsx";
 
 export interface Product {
   id: number;
@@ -16,14 +17,6 @@ export interface Product {
     rate: number;
     count: number;
   };
-}
-
-export interface ProductToCart {
-  id: number;
-  title: string;
-  price: number;
-  quantity: number;
-  image: string;
 }
 
 interface Props {
@@ -53,7 +46,7 @@ const Product = ({ id }: Props) => {
             <div>
               <span className={style.item}>
                 <h3>Price: {product.price} $</h3>
-                <AddToCartBtn product={product} />
+                <AddToCartBtn product={product} isTitleShow={true} />
               </span>
               <span className={style.item}>
                 <h3>Rate: {product.rating.rate}</h3>

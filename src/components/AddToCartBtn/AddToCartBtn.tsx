@@ -5,15 +5,18 @@ import { addProduct, deleteProduct } from "../../redux/data/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCart } from "../../redux/data/selectors";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 interface Props {
   product: Product;
+  isTitleShow: boolean;
 }
 
-const AddToCartBtn: React.FC<Props> = ({ product }) => {
+const AddToCartBtn: React.FC<Props> = ({ product, isTitleShow }) => {
   const dispatch = useDispatch();
   const cartList = useSelector(selectCart);
   const [isInTheCart, setIsInTheCart] = useState(false);
+  const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     setIsInTheCart(cartList.some((inCart) => inCart.id === product.id));
@@ -42,7 +45,9 @@ const AddToCartBtn: React.FC<Props> = ({ product }) => {
           : () => addToCart()
       }
     >
-      <span>{isInTheCart ? "DELETE" : "ADD TO CART"}</span>
+      <span>
+        {isInTheCart ? (!isMobile || isTitleShow) && "DELETE" : "ADD TO CART"}
+      </span>
       <svg className={style.icon}>
         <use xlinkHref={isInTheCart ? `${icons}#delete` : `${icons}#cart`} />
       </svg>

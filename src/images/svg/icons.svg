@@ -155,7 +155,7 @@
         stroke-linejoin="round"
       ></path>
     </symbol>
-    <symbol id="delete" viewBox="0 0 25 25">
+    <symbol id="delete" viewBox="0 0 23 25">
       <path
         d="M4 7H20"
         stroke-width="2"

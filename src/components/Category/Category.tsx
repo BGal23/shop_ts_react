@@ -3,6 +3,7 @@ import getCategory from "../../api/category.ts";
 import style from "./Category.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
+import Quantity from "../Quantity/Quantity.tsx";
 
 export interface Product {
   id: number;
@@ -49,7 +50,7 @@ const Category = ({ category, limit }: Props) => {
             </Link>
             <div className={style.box}>
               <p className={style.price}>Price {product.price} $</p>
-              <AddToCartBtn product={product} />
+              <AddToCartBtn product={product} isTitleShow={true} />
             </div>
           </li>
         ))}

@@ -1,14 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/data/selectors";
-import { addProduct, minusProduct } from "../../redux/data/cartSlice";
 import style from "./Cart.module.scss";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 import BuyNowBtn from "../BuyNowBtn/BuyNowBtn";
 import { Link } from "react-router-dom";
+import Quantity from "../Quantity/Quantity";
 
 const Cart = () => {
   const cart = useSelector(selectCart);
-  const dispatch = useDispatch();
 
   interface Cart {
     id: number;
@@ -25,30 +24,15 @@ const Cart = () => {
             <Link to={`product/${product.id}`}>{product.title}</Link>
             <div className={style.box}>
               <div>
-                <div>× {product.quantity}</div>
+                <div>Price: {product.price.toFixed(2)} $</div>
                 <div>
-                  Price: {(product.quantity * product.price).toFixed(2)} $
+                  Total: {(product.quantity * product.price).toFixed(2)} $
                 </div>
               </div>
-              <span className={style.buttonsBox}>
-                {product.quantity > 1 && (
-                  <button
-                    type="button"
-                    className={style.button}
-                    onClick={() => dispatch(minusProduct(product))}
-                  >
-                    -1
-                  </button>
-                )}
-                <AddToCartBtn product={product} />
-                <button
-                  type="button"
-                  className={style.button}
-                  onClick={() => dispatch(addProduct(product))}
-                >
-                  +1
-                </button>
-              </span>
+              <div className={style.buttonsBox}>
+                <Quantity product={product} />
+                <AddToCartBtn product={product} isTitleShow={false} />
+              </div>
             </div>
           </li>
         ))}

@@ -1,14 +1,17 @@
 .button {
   border: 2px solid var(--font-main-color);
   border-radius: 0.5em;
-  padding: 0.3em 0.8em;
+  padding: 0.3em 0.5em;
   background-color: transparent;
   font-weight: 600;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.5em;
   color: var(--font-main-color);
+  @media screen and (min-width: 768px) {
+    gap: 0.5em;
+    padding-left: 0.8em;
+  }
 }
 
 .icon {
