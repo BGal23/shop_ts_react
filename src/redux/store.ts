@@ -4,6 +4,7 @@ import { authReducer } from "./auth/slice";
 import { themeReducer } from "./data/themeSlice";
 import { categoryReducer } from "./data/categorySlice";
 import { cartReducer } from "./data/cartSlice";
+import { orderReducer } from "./data/orderSlice";
 import { Storage } from "redux-persist/es/types";
 import storage from "redux-persist/lib/storage";
 
@@ -35,6 +36,7 @@ export const store = configureStore({
     theme: persistReducer(themePersistConfig, themeReducer) as Reducer,
     cart: persistReducer(cartPersistConfig, cartReducer) as Reducer,
     category: categoryReducer,
+    order: orderReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

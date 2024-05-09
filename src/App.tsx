@@ -18,6 +18,9 @@ import NotFound from "./pages/NotFound/NotFound";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import OneProduct from "./pages/OneProduct/OneProduct";
+import Order from "./pages/Order/Order";
+import OrderCart from "./components/OrderCart/OrderCart";
+import OrderData from "./components/OrderData/OrderData";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,6 +43,11 @@ const App = () => {
         <Route path="categories/:categoryId" element={<OneCategory />} />
         <Route path="product/:productId" element={<OneProduct />} />
         <Route path="about_us" element={<AboutUs />} />
+        <Route path="order" element={<Order />}>
+          <Route path="cart" element={<OrderCart />} />
+          <Route path="your_data" element={<OrderData />} />
+          <Route path="summary" element={<AboutUs />} />
+        </Route>
         <Route
           path="user"
           element={<PrivateRoute component={User} path="/login" />}

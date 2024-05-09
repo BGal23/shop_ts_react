@@ -117,7 +117,7 @@ const LogForm: React.FC<Props> = ({ isLogin }) => {
               className={style.goToPage}
               to={isLogin ? "/signup" : "/login"}
             >
-              {isLogin ? "GO SIGN UP" : "GO LOGIN"}
+              {isLogin ? "GO SIGN UP ↪" : "GO LOGIN ↪"}
             </Link>
           </span>
         </form>

@@ -1,8 +1,11 @@
-.button {
+.link {
   border: 2px solid var(--font-main-color);
   border-radius: 0.5em;
-  padding: 0.8em;
+  padding: 0.5em;
+  padding-top: 0.7em;
   background-color: transparent;
-  font-weight: 600;
+  font-weight: 800;
+  line-height: 1em;
   color: var(--font-main-color);
+  margin-top: 1em;
 }

@@ -2,12 +2,16 @@ import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/data/selectors";
 import style from "./Cart.module.scss";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
-import BuyNowBtn from "../BuyNowBtn/BuyNowBtn";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Quantity from "../Quantity/Quantity";
 
-const Cart = () => {
+interface Props {
+  setIsCartModalOpen?: (isOpenModal: boolean) => void;
+}
+
+const Cart: React.FC<Props> = ({ setIsCartModalOpen }) => {
   const cart = useSelector(selectCart);
+  const location = useLocation();
 
   interface Cart {
     id: number;
@@ -21,7 +25,17 @@ const Cart = () => {
       <ul>
         {cart.map((product) => (
           <li key={product.id} className={style.product}>
-            <Link to={`product/${product.id}`}>{product.title}</Link>
+            <Link
+              to={`/product/${product.id}`}
+              state={{ from: location }}
+              onClick={() => {
+                if (setIsCartModalOpen) {
+                  setIsCartModalOpen(false);
+                }
+              }}
+            >
+              {product.title}
+            </Link>
             <div className={style.box}>
               <div>
                 <div>Price: {product.price.toFixed(2)} $</div>
@@ -37,27 +51,19 @@ const Cart = () => {
           </li>
         ))}
       </ul>
-      {cart.length > 0 ? (
-        <div>
-          <h3>Price of all products</h3>
-          <span className={style.priceBox}>
-            <h3>
-              {cart
-                .reduce((total: number, product: Cart) => {
-                  return (
-                    Number(total) + Number(product.quantity * product.price)
-                  );
-                }, 0)
-                .toFixed(2)}{" "}
-              $
-            </h3>
-
-            <BuyNowBtn />
-          </span>
-        </div>
-      ) : (
-        "Your shopping cart is empty"
-      )}
+      <div className={style.priceBox}>
+        <h3>Price of all products:</h3>
+        <span>
+          <h3>
+            {cart
+              .reduce((total: number, product: Cart) => {
+                return Number(total) + Number(product.quantity * product.price);
+              }, 0)
+              .toFixed(2)}{" "}
+            $
+          </h3>
+        </span>
+      </div>
     </div>
   );
 };

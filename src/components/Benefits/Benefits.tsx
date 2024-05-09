@@ -1,5 +1,5 @@
 import style from "./Benefits.module.scss";
-import items from "./items";
+import items from "./items.ts";
 import icons from "../../images/svg/icons.svg";
 
 const Benefits = () => {

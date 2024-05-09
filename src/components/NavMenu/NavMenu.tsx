@@ -11,7 +11,7 @@ interface Props {
   setIsMenuModalOpen: (isOpenModal: boolean) => void;
 }
 
-const StyledLink = styled(NavLink)`
+export const StyledLink = styled(NavLink)`
   &.active {
     text-decoration: underline;
   }

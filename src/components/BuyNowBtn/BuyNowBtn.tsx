@@ -1,10 +1,23 @@
+import { Link } from "react-router-dom";
 import style from "./BuyNowBtn.module.scss";
 
-const BuyNowBtn = () => {
+interface Props {
+  setIsCartModalOpen?: (isOpenModal: boolean) => void | undefined;
+}
+
+const BuyNowBtn: React.FC<Props> = ({ setIsCartModalOpen }) => {
   return (
-    <button type="button" className={style.button}>
+    <Link
+      to="/order/cart"
+      className={style.link}
+      onClick={() => {
+        if (setIsCartModalOpen) {
+          setIsCartModalOpen(false);
+        }
+      }}
+    >
       BUY NOW!
-    </button>
+    </Link>
   );
 };
 export default BuyNowBtn;

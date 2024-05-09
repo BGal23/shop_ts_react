@@ -4,7 +4,6 @@ import getProduct from "../../api/product.ts";
 import Stars from "../Stars/Stars";
 import AddToCartBtn from "../AddToCartBtn/AddToCartBtn";
 import BuyNowBtn from "../BuyNowBtn/BuyNowBtn";
-import Quantity from "../Quantity/Quantity.tsx";
 
 export interface Product {
   id: number;

@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
+import { selectCart } from "../../redux/data/selectors";
 import Cart from "../Cart/Cart";
 import style from "./CartModal.module.scss";
 import icons from "../../images/svg/icons.svg";
+import BuyNowBtn from "../BuyNowBtn/BuyNowBtn";
 
 interface Props {
   isCartModalOpen: boolean;
@@ -11,6 +14,7 @@ const CartModal: React.FC<Props> = ({
   isCartModalOpen,
   setIsCartModalOpen,
 }) => {
+  const cart = useSelector(selectCart);
   return (
     <div className={isCartModalOpen ? style.backGround : ""}>
       <div
@@ -31,7 +35,16 @@ const CartModal: React.FC<Props> = ({
             </svg>
           </button>
         </div>
-        <Cart />
+        {cart.length > 0 ? (
+          <>
+            <Cart setIsCartModalOpen={setIsCartModalOpen} />
+            <div className={style.button}>
+              <BuyNowBtn setIsCartModalOpen={setIsCartModalOpen} />
+            </div>
+          </>
+        ) : (
+          "Your shopping cart is empty"
+        )}
       </div>
     </div>
   );

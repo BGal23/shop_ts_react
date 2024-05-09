@@ -1,0 +1,47 @@
+.container {
+  border-top: 1px solid var(--font-main-color);
+  border-bottom: 1px solid var(--font-main-color);
+  margin-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.countries {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deliveryContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.deliveryBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.select {
+  height: 2em;
+  border: 1px solid var(--font-main-color);
+  border-bottom: 2px solid var(--font-main-color);
+  background-color: var(--background-main-color);
+  color: var(--font-main-color);
+  border-radius: 2em;
+  padding-left: 0.5em;
+  font-size: large;
+}
+
+.title {
+  font-size: larger;
+  margin: 0.5em 0 0 0;
+}
