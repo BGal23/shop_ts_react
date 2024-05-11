@@ -4,3 +4,11 @@
   justify-content: center;
   gap: 3em;
 }
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 1em;
+  line-height: 3em;
+}

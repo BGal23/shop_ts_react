@@ -6,6 +6,17 @@ interface Link {
   available: boolean;
 }
 
+interface UserData {
+  firstName: string;
+  lastName: string;
+  street: string;
+  address: string;
+  city: string;
+  phone: string;
+  email: string;
+  comment?: string;
+}
+
 export interface OrderData {
   links: Link[];
   delivery: {
@@ -15,6 +26,8 @@ export interface OrderData {
     payMethod: string;
     payMethodType: string;
   };
+  user: UserData;
+  deliveryAddress?: UserData;
 }
 
 const initialState: OrderData = {
@@ -30,6 +43,15 @@ const initialState: OrderData = {
     payMethod: "",
     payMethodType: "none",
   },
+  user: {
+    firstName: "",
+    lastName: "",
+    street: "",
+    address: "",
+    city: "",
+    phone: "",
+    email: "",
+  },
 };
 
 const orderSlice = createSlice({
@@ -42,8 +64,11 @@ const orderSlice = createSlice({
     changeLinkAvailable: (state, action) => {
       state.links[action.payload].available = true;
     },
+    addUser: (state, action) => {
+      state.user = { ...state.user, ...action.payload };
+    },
   },
 });
 
-export const { addDelivery, changeLinkAvailable } = orderSlice.actions;
+export const { addDelivery, changeLinkAvailable, addUser } = orderSlice.actions;
 export const orderReducer = orderSlice.reducer;

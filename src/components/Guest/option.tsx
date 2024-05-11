@@ -7,49 +7,49 @@ interface Options {
 
 const options: Options[] = [
   {
-    name: "First Name",
+    name: "First Name:*",
     type: "text",
     isCompany: true,
-    secondName: "Company",
+    secondName: "Company:*",
   },
   {
-    name: "Last Name",
+    name: "Last Name:*",
     type: "text",
     isCompany: true,
-    secondName: "NIP",
+    secondName: "NIP:*",
   },
   {
-    name: "Street",
+    name: "Street:*",
     type: "text",
     isCompany: false,
   },
   {
-    name: "House Number",
+    name: "House Number:*",
     type: "text",
     isCompany: false,
   },
   {
-    name: "City",
+    name: "City:*",
     type: "text",
     isCompany: false,
   },
   {
-    name: "Country",
+    name: "Country:*",
     type: "text",
     isCompany: false,
   },
   {
-    name: "Phone",
+    name: "Phone:*",
     type: "tel",
     isCompany: false,
   },
   {
-    name: "Email",
+    name: "Email:*",
     type: "email",
     isCompany: false,
   },
   {
-    name: "Comment",
+    name: "Comment:",
     type: "textarea",
     isCompany: false,
   },

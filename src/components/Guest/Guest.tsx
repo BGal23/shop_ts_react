@@ -2,14 +2,18 @@ import { useState } from "react";
 import style from "./Guest.module.scss";
 import options from "./option";
 
-const Guest = () => {
+interface Props {
+  title: string;
+}
+
+const Guest = ({ title }: Props) => {
   const [isCompany, setIsCompany] = useState(false);
 
   return (
     <div className={style.container}>
-      <h3>I buy as a guest</h3>
+      <h3>{title}</h3>
       <form className={style.form}>
-        <div>
+        <div className={style.radioInputs}>
           <label>
             <input
               type="radio"
