@@ -1,57 +1,60 @@
 interface Options {
   name: string;
   type: string;
-  isCompany: boolean;
+  key: string;
   secondName?: string;
+  secondKey?: string;
 }
 
 const options: Options[] = [
   {
     name: "First Name:*",
     type: "text",
-    isCompany: true,
+    key: "firstName",
     secondName: "Company:*",
+    secondKey: "company",
   },
   {
     name: "Last Name:*",
     type: "text",
-    isCompany: true,
+    key: "lastName",
     secondName: "NIP:*",
+    secondKey: "nip",
   },
   {
     name: "Street:*",
     type: "text",
-    isCompany: false,
+    key: "street",
   },
   {
     name: "House Number:*",
     type: "text",
-    isCompany: false,
+    key: "address",
   },
   {
     name: "City:*",
     type: "text",
-    isCompany: false,
+    key: "city",
   },
   {
     name: "Country:*",
     type: "text",
-    isCompany: false,
+    key: "country",
   },
   {
     name: "Phone:*",
     type: "tel",
-    isCompany: false,
+    key: "phone",
   },
   {
     name: "Email:*",
     type: "email",
-    isCompany: false,
+    key: "email",
   },
   {
     name: "Comment:",
     type: "textarea",
-    isCompany: false,
+    key: "comment",
   },
 ];
 

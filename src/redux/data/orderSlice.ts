@@ -7,13 +7,15 @@ interface Link {
 }
 
 interface UserData {
-  firstName: string;
-  lastName: string;
-  street: string;
-  address: string;
-  city: string;
-  phone: string;
-  email: string;
+  firstName?: string;
+  company?: string;
+  lastName?: string;
+  nip?: string;
+  street?: string;
+  address?: string;
+  city?: string;
+  phone?: string;
+  email?: string;
   comment?: string;
 }
 
@@ -44,8 +46,6 @@ const initialState: OrderData = {
     payMethodType: "none",
   },
   user: {
-    firstName: "",
-    lastName: "",
     street: "",
     address: "",
     city: "",
@@ -67,8 +67,16 @@ const orderSlice = createSlice({
     addUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
     },
+    addDeliveryAddress: (state, action) => {
+      if (action.payload === 0) {
+        state.deliveryAddress = {};
+      } else {
+        state.deliveryAddress = { ...state.deliveryAddress, ...action.payload };
+      }
+    },
   },
 });
 
-export const { addDelivery, changeLinkAvailable, addUser } = orderSlice.actions;
+export const { addDelivery, changeLinkAvailable, addUser, addDeliveryAddress } =
+  orderSlice.actions;
 export const orderReducer = orderSlice.reducer;

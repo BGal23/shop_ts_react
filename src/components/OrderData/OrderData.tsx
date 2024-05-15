@@ -4,7 +4,11 @@ import Checkbox from "react-custom-checkbox";
 import * as Icon from "react-icons/fi";
 import { Link } from "react-router-dom";
 import style from "./OrderData.module.scss";
-import { changeLinkAvailable } from "../../redux/data/orderSlice";
+import {
+  changeLinkAvailable,
+  addUser,
+  addDeliveryAddress,
+} from "../../redux/data/orderSlice";
 import { useDispatch } from "react-redux";
 import Guest from "../Guest/Guest";
 import { useState } from "react";
@@ -17,7 +21,7 @@ const OrderData = () => {
       <div>
         <Link to="/login">Go Login</Link>
       </div>
-      <Guest title={"I buy as a guest"} />
+      <Guest title={"I buy as a guest"} addToForm={addUser} />
 
       <div className={style.checkbox}>
         <Checkbox
@@ -32,11 +36,18 @@ const OrderData = () => {
             backgroundColor: "var(--background-main-color)",
           }}
           labelStyle={{ marginLeft: 5, userSelect: "none" }}
-          onChange={(event: boolean) => setIsDifferentAddress(event)}
+          onChange={(event: boolean) => {
+            setIsDifferentAddress(event), dispatch(addDeliveryAddress(0));
+          }}
         />
         Choose a other delivery address
       </div>
-      {IsDifferentAddress && <Guest title={"Other delivery address"} />}
+      {IsDifferentAddress && (
+        <Guest
+          title={"Other delivery address"}
+          addToForm={addDeliveryAddress}
+        />
+      )}
       <div className={style.links}>
         <Link to="/order/cart">BACK TO CART ↩</Link>
         <Link

@@ -16,3 +16,6 @@ export const selectCategoriesName = (state: State) =>
   state.category.categoriesName;
 export const selectOrder = (state: State) => state.order.delivery;
 export const selectLinks = (state: State) => state.order.links;
+export const selectUserData = (state: State) => state.order.user;
+export const selectDeliveryAddress = (state: State) =>
+  state.order.deliveryAddress;
