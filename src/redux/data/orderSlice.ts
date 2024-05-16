@@ -6,7 +6,7 @@ interface Link {
   available: boolean;
 }
 
-interface UserData {
+export interface UserData {
   firstName?: string;
   company?: string;
   lastName?: string;
@@ -17,6 +17,7 @@ interface UserData {
   phone?: string;
   email?: string;
   comment?: string;
+  isCompany?: boolean;
 }
 
 export interface OrderData {
@@ -29,8 +30,21 @@ export interface OrderData {
     payMethodType: string;
   };
   user: UserData;
-  deliveryAddress?: UserData;
+  deliveryAddress: UserData;
 }
+
+const user = {
+  firstName: "",
+  company: "",
+  lastName: "",
+  nip: "",
+  street: "",
+  address: "",
+  city: "",
+  phone: "",
+  email: "",
+  isCompany: false,
+};
 
 const initialState: OrderData = {
   links: [
@@ -45,13 +59,8 @@ const initialState: OrderData = {
     payMethod: "",
     payMethodType: "none",
   },
-  user: {
-    street: "",
-    address: "",
-    city: "",
-    phone: "",
-    email: "",
-  },
+  user,
+  deliveryAddress: { ...user },
 };
 
 const orderSlice = createSlice({

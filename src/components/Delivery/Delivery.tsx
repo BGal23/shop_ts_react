@@ -1,13 +1,14 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction } from "react";
 import style from "./Delivery.module.scss";
 import countries from "./countries";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addDelivery } from "../../redux/data/orderSlice";
 import { Options } from "./countries";
+import { selectOrder } from "../../redux/data/selectors";
 
 const Delivery = () => {
-  const [countryValue, setCountryValue] = useState("pl");
-  const [deliveryValue, setDeliveryValue] = useState("");
+  const countryValue = useSelector(selectOrder).country;
+  const deliveryValue = useSelector(selectOrder).option;
   const dispatch = useDispatch();
 
   interface Event {
@@ -15,8 +16,7 @@ const Delivery = () => {
   }
 
   const handleCountryChange = (event: Event) => {
-    setCountryValue(event.target.value);
-    setDeliveryValue("");
+    dispatch(addDelivery({ country: event.target.value, option: "", cost: 0 }));
     dispatch(
       addDelivery({
         country: event.target.value,
@@ -26,17 +26,9 @@ const Delivery = () => {
     );
   };
 
-  const handleDeliveryChange = (
-    option: Options,
-    value: SetStateAction<string>
-  ) => {
-    setDeliveryValue(value);
+  const handleDeliveryChange = (option: Options) => {
     dispatch(addDelivery({ option: option.deliverer, cost: option.cost }));
   };
-
-  useEffect(() => {
-    setDeliveryValue("");
-  }, [countryValue]);
 
   return (
     <div className={style.container}>
@@ -69,9 +61,7 @@ const Delivery = () => {
                     type="radio"
                     name="deliverer"
                     checked={deliveryValue === option.deliverer}
-                    onChange={() =>
-                      handleDeliveryChange(option, option.deliverer)
-                    }
+                    onChange={() => handleDeliveryChange(option)}
                   />
                   {`${option.deliverer} ${option.cost}$`}
                 </label>

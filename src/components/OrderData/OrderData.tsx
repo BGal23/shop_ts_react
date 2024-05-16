@@ -12,16 +12,25 @@ import {
 import { useDispatch } from "react-redux";
 import Guest from "../Guest/Guest";
 import { useState } from "react";
+import {
+  selectUserData,
+  selectDeliveryAddress,
+} from "../../redux/data/selectors.ts";
 
 const OrderData = () => {
   const [IsDifferentAddress, setIsDifferentAddress] = useState(false);
   const dispatch = useDispatch();
+
   return (
     <>
       <div>
         <Link to="/login">Go Login</Link>
       </div>
-      <Guest title={"I buy as a guest"} addToForm={addUser} />
+      <Guest
+        title={"I buy as a guest"}
+        addToForm={addUser}
+        selectData={selectUserData}
+      />
 
       <div className={style.checkbox}>
         <Checkbox
@@ -37,7 +46,7 @@ const OrderData = () => {
           }}
           labelStyle={{ marginLeft: 5, userSelect: "none" }}
           onChange={(event: boolean) => {
-            setIsDifferentAddress(event), dispatch(addDeliveryAddress(0));
+            setIsDifferentAddress(event);
           }}
         />
         Choose a other delivery address
@@ -46,6 +55,7 @@ const OrderData = () => {
         <Guest
           title={"Other delivery address"}
           addToForm={addDeliveryAddress}
+          selectData={selectDeliveryAddress}
         />
       )}
       <div className={style.links}>

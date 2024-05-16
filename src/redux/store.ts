@@ -30,13 +30,18 @@ const cartPersistConfig: Persist = {
   storage: storage,
 };
 
+const orderPersistConfig: Persist = {
+  key: "order",
+  storage: storage,
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer) as Reducer,
     theme: persistReducer(themePersistConfig, themeReducer) as Reducer,
     cart: persistReducer(cartPersistConfig, cartReducer) as Reducer,
+    order: persistReducer(orderPersistConfig, orderReducer) as Reducer,
     category: categoryReducer,
-    order: orderReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

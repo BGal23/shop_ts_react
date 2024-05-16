@@ -3,7 +3,7 @@ import { Cart } from "./cartSlice";
 import { Theme } from "./themeSlice";
 import { OrderData } from "./orderSlice";
 
-interface State {
+export interface State {
   theme: Theme;
   category: Category;
   cart: Cart;

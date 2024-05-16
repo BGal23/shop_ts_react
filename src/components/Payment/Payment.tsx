@@ -1,11 +1,12 @@
-import { useState } from "react";
 import style from "./Payment.module.scss";
 import methods from "./methods";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addDelivery } from "../../redux/data/orderSlice";
+import { selectOrder } from "../../redux/data/selectors";
 
 const Payment = () => {
-  const [paymentValue, setPaymentValue] = useState("");
+  const paymentValue = useSelector(selectOrder).payMethod;
+  const paymentTypeValue = useSelector(selectOrder).payMethodType;
   const dispatch = useDispatch();
 
   return (
@@ -16,15 +17,15 @@ const Payment = () => {
           <input
             name="paymentMethods"
             type="radio"
+            checked={paymentValue === method.type}
             value={method.type}
             onChange={(event) => {
-              setPaymentValue(event.target.value),
-                dispatch(
-                  addDelivery({
-                    payMethod: event.target.value,
-                    payMethodType: "none",
-                  })
-                );
+              dispatch(
+                addDelivery({
+                  payMethod: event.target.value,
+                  payMethodType: "none",
+                })
+              );
             }}
           />
           {`${method.type} ${
@@ -37,6 +38,7 @@ const Payment = () => {
                   <input
                     name="options"
                     type="radio"
+                    checked={paymentTypeValue === option}
                     value={option}
                     onChange={(event) =>
                       dispatch(
