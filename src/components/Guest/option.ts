@@ -1,4 +1,4 @@
-interface Options {
+export interface Options {
   name: string;
   type: string;
   key: string;

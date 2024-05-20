@@ -2,16 +2,16 @@ import { UserData } from "../../redux/data/orderSlice";
 
 const getCheckData = (data: UserData) => {
   const {
-    firstName,
-    company,
-    lastName,
-    nip,
-    street,
-    country,
-    address,
-    city,
-    phone,
-    email,
+    firstName = "",
+    company = "",
+    lastName = "",
+    nip = "",
+    street = "",
+    country = "",
+    address = "",
+    city = "",
+    phone = "",
+    email = "",
   } = data;
 
   const isNotEmpty = (value: string, quantity: number) =>

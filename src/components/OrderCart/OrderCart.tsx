@@ -19,43 +19,32 @@ const OrderCart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const getLinkAvailable = (isAvailable: boolean) => {
+      dispatch(
+        changeLinkAvailable({
+          index: 1,
+          available: isAvailable,
+        })
+      );
+    };
+
     if (deliveryData.option && deliveryData.payMethod) {
       if (
         deliveryData.payMethod === "Bank transfer" ||
         deliveryData.payMethod === "Credit cart"
       ) {
         if (deliveryData.payMethodType !== "none") {
-          dispatch(
-            changeLinkAvailable({
-              index: 1,
-              available: true,
-            })
-          );
+          getLinkAvailable(true);
         } else {
-          dispatch(
-            changeLinkAvailable({
-              index: 1,
-              available: false,
-            })
-          );
+          getLinkAvailable(false);
         }
       } else {
-        dispatch(
-          changeLinkAvailable({
-            index: 1,
-            available: true,
-          })
-        );
+        getLinkAvailable(true);
       }
     } else {
-      dispatch(
-        changeLinkAvailable({
-          index: 1,
-          available: false,
-        })
-      );
+      getLinkAvailable(false);
     }
-  }, [deliveryData, dispatch]);
+  }, [deliveryData, dispatch, linkAvailable]);
 
   return (
     <>

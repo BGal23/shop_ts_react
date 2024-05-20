@@ -1,15 +1,13 @@
 import style from "./Guest.module.scss";
-import { options, radioButtons } from "./option.ts";
+import { options, radioButtons } from "./option";
 import { useDispatch, useSelector } from "react-redux";
 import { UnknownAction } from "@reduxjs/toolkit";
-import { State } from "../../redux/data/selectors.ts";
-import { UserData } from "../../redux/data/orderSlice.ts";
+import { State } from "../../redux/data/selectors";
+import { UserData } from "../../redux/data/orderSlice";
 
 interface Props {
   title: string;
-  addToForm: (
-    data: Record<string, string | boolean | UserData>
-  ) => UnknownAction;
+  addToForm: (data: Partial<UserData>) => UnknownAction;
   selectData: (state: State) => UserData;
 }
 
@@ -17,9 +15,14 @@ const Guest = ({ title, addToForm, selectData }: Props) => {
   const userData: UserData = useSelector(selectData);
   const dispatch = useDispatch();
 
-  const handleInput = (value: string, key: string) => {
-    const formData: Record<string, string> = { [key]: value };
+  const handleInput = (value: string, key: keyof UserData) => {
+    const formData: Partial<UserData> = { [key]: value };
     dispatch(addToForm(formData));
+  };
+
+  const getValue = (key: keyof UserData): string => {
+    const value = userData[key];
+    return typeof value === "string" ? value : "";
   };
 
   return (
@@ -62,9 +65,9 @@ const Guest = ({ title, addToForm, selectData }: Props) => {
                 className={style.input}
                 type={option.type}
                 placeholder={option.placeholder}
-                value={userData[option.key]}
+                value={getValue(option.key as keyof UserData)}
                 onChange={(event) =>
-                  handleInput(event.target.value, option.key)
+                  handleInput(event.target.value, option.key as keyof UserData)
                 }
               />
             </label>
