@@ -17,8 +17,6 @@ const Guest = ({ title, addToForm, selectData }: Props) => {
   const userData: UserData = useSelector(selectData);
   const dispatch = useDispatch();
 
-  console.log(userData);
-
   const handleInput = (value: string, key: string) => {
     const formData: Record<string, string> = { [key]: value };
     dispatch(addToForm(formData));
@@ -66,12 +64,7 @@ const Guest = ({ title, addToForm, selectData }: Props) => {
                 placeholder={option.placeholder}
                 value={userData[option.key]}
                 onChange={(event) =>
-                  handleInput(
-                    event.target.value,
-                    userData.isCompany && option.secondKey
-                      ? option.secondKey
-                      : option.key
-                  )
+                  handleInput(event.target.value, option.key)
                 }
               />
             </label>

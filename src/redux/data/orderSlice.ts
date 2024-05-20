@@ -14,10 +14,12 @@ export interface UserData {
   street?: string;
   address?: string;
   city?: string;
+  country?: string;
   phone?: string;
   email?: string;
   comment?: string;
   isCompany?: boolean;
+  otherAddress?: boolean;
 }
 
 export interface OrderData {
@@ -40,6 +42,7 @@ const user = {
   nip: "",
   street: "",
   address: "",
+  country: "",
   city: "",
   phone: "",
   email: "",
@@ -59,7 +62,7 @@ const initialState: OrderData = {
     payMethod: "",
     payMethodType: "none",
   },
-  user,
+  user: { ...user, otherAddress: false },
   deliveryAddress: { ...user },
 };
 
@@ -71,7 +74,7 @@ const orderSlice = createSlice({
       state.delivery = { ...state.delivery, ...action.payload };
     },
     changeLinkAvailable: (state, action) => {
-      state.links[action.payload].available = true;
+      state.links[action.payload.index].available = action.payload.available;
     },
     addUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };

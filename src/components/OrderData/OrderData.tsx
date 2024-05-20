@@ -9,17 +9,39 @@ import {
   addUser,
   addDeliveryAddress,
 } from "../../redux/data/orderSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Guest from "../Guest/Guest";
-import { useState } from "react";
 import {
   selectUserData,
   selectDeliveryAddress,
+  selectLinks,
 } from "../../redux/data/selectors.ts";
+import { useEffect } from "react";
+import getCheckData from "./validate.ts";
 
 const OrderData = () => {
-  const [IsDifferentAddress, setIsDifferentAddress] = useState(false);
+  const otherAddress = useSelector(selectUserData).otherAddress;
+  const checkData = useSelector(selectUserData);
+  const checkAddress = useSelector(selectDeliveryAddress);
+  const linkAvailable = useSelector(selectLinks)[2].available;
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (otherAddress === false) {
+      dispatch(
+        changeLinkAvailable({ index: 2, available: getCheckData(checkData) })
+      );
+    } else {
+      const checkDataValid = getCheckData(checkData);
+      const checkAddressValid = getCheckData(checkAddress);
+      dispatch(
+        changeLinkAvailable({
+          index: 2,
+          available: checkDataValid && checkAddressValid,
+        })
+      );
+    }
+  }, [checkData, dispatch, otherAddress, checkAddress]);
 
   return (
     <>
@@ -36,7 +58,7 @@ const OrderData = () => {
         <Checkbox
           name="checkbox"
           icon={<Icon.FiCheck color="var(--font-main-color" size={20} />}
-          checked={IsDifferentAddress}
+          checked={otherAddress}
           size={20}
           borderColor="var(--font-main-color)"
           borderWidth={1.5}
@@ -46,12 +68,12 @@ const OrderData = () => {
           }}
           labelStyle={{ marginLeft: 5, userSelect: "none" }}
           onChange={(event: boolean) => {
-            setIsDifferentAddress(event);
+            dispatch(addUser({ otherAddress: event }));
           }}
         />
         Choose a other delivery address
       </div>
-      {IsDifferentAddress && (
+      {otherAddress && (
         <Guest
           title={"Other delivery address"}
           addToForm={addDeliveryAddress}
@@ -61,14 +83,14 @@ const OrderData = () => {
       <div className={style.links}>
         <Link to="/order/cart">BACK TO CART ↩</Link>
         <Link
-          //   style={
-          //     isDeliveryOk && cart.length > 0
-          //       ? { background: "transparent" }
-          //       : {
-          //           pointerEvents: "none",
-          //           opacity: "0.5",
-          //         }
-          //   }
+          style={
+            linkAvailable
+              ? { background: "transparent" }
+              : {
+                  pointerEvents: "none",
+                  opacity: "0.5",
+                }
+          }
           to="/order/summary"
           onClick={() => dispatch(changeLinkAvailable(2))}
         >

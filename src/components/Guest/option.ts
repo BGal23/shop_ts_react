@@ -3,8 +3,6 @@ interface Options {
   type: string;
   key: string;
   placeholder: string;
-  secondName?: string;
-  secondKey?: string;
 }
 
 interface RadioButton {

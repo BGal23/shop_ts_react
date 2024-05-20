@@ -4,14 +4,18 @@ import style from "./OrderCart.module.scss";
 import Delivery from "../Delivery/Delivery";
 import Payment from "../Payment/Payment";
 import { useDispatch, useSelector } from "react-redux";
-import { selectOrder, selectCart } from "../../redux/data/selectors";
-import { useEffect, useState } from "react";
+import {
+  selectOrder,
+  selectCart,
+  selectLinks,
+} from "../../redux/data/selectors";
+import { useEffect } from "react";
 import { changeLinkAvailable } from "../../redux/data/orderSlice";
 
 const OrderCart = () => {
   const deliveryData = useSelector(selectOrder);
+  const linkAvailable = useSelector(selectLinks)[1].available;
   const cart = useSelector(selectCart);
-  const [isDeliveryOk, setIsDeliveryOk] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,15 +25,37 @@ const OrderCart = () => {
         deliveryData.payMethod === "Credit cart"
       ) {
         if (deliveryData.payMethodType !== "none") {
-          deliveryData.payMethodType && setIsDeliveryOk(true);
+          dispatch(
+            changeLinkAvailable({
+              index: 1,
+              available: true,
+            })
+          );
         } else {
-          deliveryData.payMethodType && setIsDeliveryOk(false);
+          dispatch(
+            changeLinkAvailable({
+              index: 1,
+              available: false,
+            })
+          );
         }
       } else {
-        deliveryData.payMethodType && setIsDeliveryOk(true);
+        dispatch(
+          changeLinkAvailable({
+            index: 1,
+            available: true,
+          })
+        );
       }
+    } else {
+      dispatch(
+        changeLinkAvailable({
+          index: 1,
+          available: false,
+        })
+      );
     }
-  }, [deliveryData]);
+  }, [deliveryData, dispatch]);
 
   return (
     <>
@@ -40,7 +66,7 @@ const OrderCart = () => {
         <Link to="/">BACK TO SHOPPING ↩</Link>
         <Link
           style={
-            isDeliveryOk && cart.length > 0
+            linkAvailable && cart.length > 0
               ? { background: "transparent" }
               : {
                   pointerEvents: "none",
@@ -48,7 +74,6 @@ const OrderCart = () => {
                 }
           }
           to="/order/your_data"
-          onClick={() => dispatch(changeLinkAvailable(1))}
         >
           YOUR DATA ➞
         </Link>
