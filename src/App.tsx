@@ -21,6 +21,7 @@ import OneProduct from "./pages/OneProduct/OneProduct";
 import Order from "./pages/Order/Order";
 import OrderCart from "./components/OrderCart/OrderCart";
 import OrderData from "./components/OrderData/OrderData";
+import Summary from "./components/Summary/Summary";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const App = () => {
         <Route path="order" element={<Order />}>
           <Route path="cart" element={<OrderCart />} />
           <Route path="your_data" element={<OrderData />} />
-          <Route path="summary" element={<AboutUs />} />
+          <Route path="summary" element={<Summary />} />
         </Route>
         <Route
           path="user"

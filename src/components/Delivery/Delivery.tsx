@@ -44,7 +44,7 @@ const Delivery = () => {
             value={countryValue}
           >
             {countries.map((country) => (
-              <option key={country.id} value={country.value}>
+              <option key={country.id} value={country.country}>
                 {country.country}
               </option>
             ))}
@@ -54,7 +54,7 @@ const Delivery = () => {
           <p>Delivery option:</p>
           <div className={style.deliveryBox}>
             {countries
-              .find((country) => country.value === countryValue)
+              .find((country) => country.country === countryValue)
               ?.options.map((option, index) => (
                 <label key={index}>
                   <input

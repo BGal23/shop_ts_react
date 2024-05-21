@@ -1,0 +1,14 @@
+.dataBox {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+
+  & p,
+  h3 {
+    margin: 0;
+  }
+}
+
+.title {
+  margin: 0.5em 0 0.5em;
+}

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   quantity: number;

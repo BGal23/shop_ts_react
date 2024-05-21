@@ -23,6 +23,7 @@ const Payment = () => {
               dispatch(
                 addDelivery({
                   payMethod: event.target.value,
+                  additionalCost: method.cashPayment,
                   payMethodType: "none",
                 })
               );

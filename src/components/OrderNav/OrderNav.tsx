@@ -1,10 +1,19 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StyledLink } from "../NavMenu/NavMenu";
 import style from "./OrderNav.module.scss";
 import { selectLinks } from "../../redux/data/selectors";
+import { useEffect } from "react";
+import { changeLinkAvailable } from "../../redux/data/orderSlice";
 
 const OrderNav = () => {
   const links = useSelector(selectLinks);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!links[1].available) {
+      dispatch(changeLinkAvailable({ index: 2, available: false }));
+    }
+  });
 
   return (
     <ul className={style.container}>

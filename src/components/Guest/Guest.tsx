@@ -65,6 +65,7 @@ const Guest = ({ title, addToForm, selectData }: Props) => {
                 className={style.input}
                 type={option.type}
                 placeholder={option.placeholder}
+                // style={{ border: "2px solid red" }}
                 value={getValue(option.key as keyof UserData)}
                 onChange={(event) =>
                   handleInput(event.target.value, option.key as keyof UserData)

@@ -30,6 +30,7 @@ export interface OrderData {
     cost: number;
     payMethod: string;
     payMethodType: string;
+    additionalCost: number;
   };
   user: UserData;
   deliveryAddress: UserData;
@@ -61,6 +62,7 @@ const initialState: OrderData = {
     cost: 0,
     payMethod: "",
     payMethodType: "none",
+    additionalCost: 0,
   },
   user: { ...user, otherAddress: false },
   deliveryAddress: { ...user },
