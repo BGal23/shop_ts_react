@@ -28,34 +28,34 @@ const SummaryData: React.FC<Props> = ({ title, data }) => {
       <div>
         {isCompany ? (
           <div className={style.dataBox}>
-            <p>Company:</p>
+            <p className={style.text}>Company:</p>
             <h3>{company}</h3> <p>NIP: {nip}</p>
           </div>
         ) : (
           <div className={style.dataBox}>
-            <p>Name:</p>
+            <p className={style.text}>Name:</p>
             <h3>
               {firstName} {lastName}
             </h3>
           </div>
         )}
         <div className={style.dataBox}>
-          <p>Address:</p>
+          <p className={style.text}>Address:</p>
           <h3>
             {street}, {address}, {city}, {country}
           </h3>
         </div>
         <div className={style.dataBox}>
-          <p>Email:</p>
+          <p className={style.text}>Email:</p>
           <h3>{email}</h3>
         </div>
         <div className={style.dataBox}>
-          <p>Phone:</p>
+          <p className={style.text}>Phone:</p>
           <h3>{phone}</h3>
         </div>
         {comment && (
           <div className={style.dataBox}>
-            <p>Comment:</p>
+            <p className={style.text}>Comment:</p>
             <h3>{comment}</h3>
           </div>
         )}

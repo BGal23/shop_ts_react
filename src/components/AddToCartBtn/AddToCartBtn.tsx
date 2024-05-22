@@ -20,7 +20,7 @@ const AddToCartBtn: React.FC<Props> = ({ product, isTitleShow }) => {
 
   useEffect(() => {
     setIsInTheCart(cartList.some((inCart) => inCart.id === product.id));
-  }, [cartList]);
+  }, [cartList, product.id]);
 
   const addToCart = async () => {
     const productToCart = {

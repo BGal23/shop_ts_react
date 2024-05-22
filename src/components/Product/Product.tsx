@@ -53,7 +53,7 @@ const Product = ({ id }: Props) => {
               </span>
               <span className={style.item}>
                 <h3>Count: {product.rating.count}</h3>
-                <BuyNowBtn />
+                <BuyNowBtn product={product} />
               </span>
             </div>
           </div>

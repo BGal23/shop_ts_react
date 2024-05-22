@@ -9,9 +9,11 @@ import {
 import SummaryData from "../SummaryData/SummaryData";
 import { useEffect, useState } from "react";
 import { Product } from "../../redux/data/cartSlice";
+import { Link } from "react-router-dom";
 import Regulation from "../Regulation/Regulation";
 
 const Summary = () => {
+  const [isCanPay, setIsCanPay] = useState(false);
   const userData = useSelector(selectUserData);
   const deliveryData = useSelector(selectDeliveryAddress);
   const cart = useSelector(selectCart);
@@ -40,10 +42,12 @@ const Summary = () => {
               <span key={index} className={style.product}>
                 <p className={style.productTitle}>{product.title}</p>
                 <div className={style.price}>
-                  <p>
-                    ({product.price} $ x {product.quantity})
-                  </p>
-                  <h3>+ {product.price * product.quantity} $</h3>
+                  {product.quantity > 1 && (
+                    <p>
+                      ({product.price.toFixed(2)} $ × {product.quantity})
+                    </p>
+                  )}
+                  <h3>+ {(product.price * product.quantity).toFixed(2)} $</h3>
                 </div>
               </span>
             ))}
@@ -56,7 +60,7 @@ const Summary = () => {
         <div className={style.box}>
           <div className={style.product}>
             <p>{`${delivery.option} (${delivery.country})`}</p>
-            <h3>+ {delivery.cost} $</h3>
+            <h3>+ {delivery.cost.toFixed(2)} $</h3>
           </div>
           <div className={style.product}>
             <p>{delivery.payMethod}</p>
@@ -88,7 +92,26 @@ const Summary = () => {
       ) : (
         <p>The shipping address remains the same as the Employer's address</p>
       )}
-      {/* <Regulation /> */}
+      <div className={style.payLink}>
+        <Link
+          style={
+            isCanPay
+              ? { background: "transparent" }
+              : {
+                  pointerEvents: "none",
+                  opacity: "0.5",
+                }
+          }
+          to="/"
+        >
+          I CONFIRM AND PAY
+        </Link>
+      </div>
+      <Regulation
+        checkCheckbox={isCanPay}
+        isValidateOn={false}
+        setCheckCheckbox={setIsCanPay}
+      />
     </div>
   );
 };

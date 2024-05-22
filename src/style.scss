@@ -48,3 +48,19 @@ button {
     scale: 1.1;
   }
 }
+
+input {
+  height: 2em;
+  padding-left: 0.5em;
+  border: 1px solid var(--font-main-color);
+  border-radius: 1em;
+  color: var(--font-main-color);
+  background-color: var(--background-main-color);
+}
+
+input[type="radio"] {
+  accent-color: var(--link-font);
+
+  width: 1em;
+  height: 1em;
+}

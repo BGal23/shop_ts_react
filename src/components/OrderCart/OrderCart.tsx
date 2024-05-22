@@ -49,8 +49,10 @@ const OrderCart = () => {
   return (
     <>
       <Cart />
-      <Delivery />
-      <Payment />
+      <div className={style.box}>
+        <Delivery />
+        <Payment />
+      </div>
       <div className={style.links}>
         <Link to="/">BACK TO SHOPPING ↩</Link>
         <Link

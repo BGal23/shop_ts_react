@@ -3,6 +3,10 @@
   border-bottom: 1px solid var(--font-main-color);
   margin-top: 0.5em;
   padding-bottom: 0.5em;
+  @media screen and (min-width: 768px) {
+    border: 0;
+    width: 40%;
+  }
 }
 
 .form {
