@@ -57,7 +57,7 @@ const initialState: OrderData = {
     { title: "SUMMARY", url: "summary", available: false },
   ],
   delivery: {
-    country: "pl",
+    country: "Poland 🇵🇱",
     option: "",
     cost: 0,
     payMethod: "",

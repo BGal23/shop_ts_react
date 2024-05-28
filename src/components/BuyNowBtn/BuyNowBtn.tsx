@@ -13,13 +13,10 @@ const BuyNowBtn: React.FC<Props> = ({ setIsCartModalOpen, product }) => {
   const dispatch = useDispatch();
 
   const handleBtn = async () => {
+    if (setIsCartModalOpen) {
+      setIsCartModalOpen(false);
+    }
     if (product) {
-      if (setIsCartModalOpen) {
-        setIsCartModalOpen(false);
-      }
-
-      console.log(product);
-
       const productToCart = {
         id: product.id,
         title: product.title,

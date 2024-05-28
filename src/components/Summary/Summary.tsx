@@ -32,6 +32,12 @@ const Summary = () => {
     );
   }, [cart]);
 
+  const resetOrderData = () => {
+    localStorage.removeItem("persist:cart");
+    localStorage.removeItem("persist:order");
+    window.location.href = "/?reset=true";
+  };
+
   return (
     <div className={style.container}>
       <div>
@@ -103,6 +109,7 @@ const Summary = () => {
                 }
           }
           to="/"
+          onClick={resetOrderData}
         >
           I CONFIRM AND PAY
         </Link>
