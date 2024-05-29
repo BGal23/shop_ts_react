@@ -6,6 +6,8 @@
   justify-content: space-between;
   align-items: center;
   z-index: 4;
+  background-color: var(--header-color);
+  border-bottom: 1px solid var(--font-main-color);
 }
 
 .cartBtn,
@@ -13,6 +15,15 @@
 .themeBtn {
   background-color: transparent;
   border: none;
+}
+
+.searchBtn {
+  background-color: transparent;
+  border: none;
+  & svg {
+    stroke: var(--font-main-color);
+    fill: none;
+  }
 }
 
 .rightContainer {

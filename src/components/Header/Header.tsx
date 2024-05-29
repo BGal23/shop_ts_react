@@ -12,10 +12,12 @@ import MenuModal from "../MenuModal/MenuModal";
 import CartModal from "../CartModal/CartModal";
 import NavMenu from "../NavMenu/NavMenu";
 import Footer from "../Footer/Footer";
+import SearchModal from "../SearchModal/SearchModal";
 
 const Header = () => {
   const [isMenuModalOpen, setIsMenuModalOpen] = useState<boolean>(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState<boolean>(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
   const isDarkModeOn = useSelector(selectThemeMode);
   const cartCount = useSelector(selectCart);
@@ -34,6 +36,15 @@ const Header = () => {
               </div>
             </Link>
             <div className={style.rightContainer}>
+              <button
+                type="button"
+                className={style.searchBtn}
+                onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}
+              >
+                <svg className={style.icon}>
+                  <use xlinkHref={`${icons}#search`} />
+                </svg>
+              </button>
               <button
                 type="button"
                 className={style.themeBtn}
@@ -98,6 +109,10 @@ const Header = () => {
       <CartModal
         isCartModalOpen={isCartModalOpen}
         setIsCartModalOpen={setIsCartModalOpen}
+      />
+      <SearchModal
+        isSearchModalOpen={isSearchModalOpen}
+        setIsSearchModalOpen={setIsSearchModalOpen}
       />
       <DarkMode />
     </>

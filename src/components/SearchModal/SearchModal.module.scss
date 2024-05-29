@@ -1,0 +1,58 @@
+.container {
+  position: absolute;
+  height: 2em;
+  top: calc(-2em);
+  width: calc(320px - 2px - 0.5em);
+  height: 5em;
+  z-index: 3;
+  left: calc(50% - 160px + 0.5em);
+  background-color: var(--background-main-color);
+  border: 1px solid var(--font-main-color);
+  border-top: 0;
+  border-radius: 0 0 1em 1em;
+  transition: top 0.3s ease;
+  box-shadow: -0.5em 0.5em 0 0 var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  margin: 2em 1em 0.5em 1em;
+  align-items: center;
+  width: calc(100% - 2em);
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  padding-left: 2.5em;
+  width: 100%;
+}
+
+.closeBtn {
+  border: none;
+  background-color: transparent;
+  width: 2.5em;
+  height: 2.5em;
+  margin-left: 1em;
+}
+.iconSearch {
+  width: 1.5em;
+  height: 1.5em;
+  padding-left: 0.4em;
+  stroke: var(--font-main-color);
+  fill: none;
+  position: absolute;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: var(--font-main-color);
+}
