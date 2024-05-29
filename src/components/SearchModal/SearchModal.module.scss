@@ -3,7 +3,6 @@
   height: 2em;
   top: calc(-2em);
   width: calc(320px - 2px - 0.5em);
-  height: 5em;
   z-index: 3;
   left: calc(50% - 160px + 0.5em);
   background-color: var(--background-main-color);
@@ -14,6 +13,15 @@
   box-shadow: -0.5em 0.5em 0 0 var(--shadow-color);
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    width: calc(500px - 2px - 0.5em);
+    left: calc(50% - 150px + 0.5em);
+  }
+
+  @media screen and (min-width: 1280px) {
+    left: calc(50% + 100px);
+  }
 }
 
 .box {
@@ -55,4 +63,31 @@
   width: 100%;
   height: 100%;
   fill: var(--font-main-color);
+}
+
+.productsBox {
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.product {
+  margin: 0 1em 0;
+  width: calc(100% - 2em);
+  height: 1em;
+  background-color: var(--background-main-color);
+}
+
+.text {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+
+  &:hover {
+    color: var(--link-font);
+    text-decoration: underline;
+  }
 }

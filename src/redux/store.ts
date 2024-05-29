@@ -7,6 +7,7 @@ import { cartReducer } from "./data/cartSlice";
 import { orderReducer } from "./data/orderSlice";
 import { Storage } from "redux-persist/es/types";
 import storage from "redux-persist/lib/storage";
+import { searchReducer } from "./data/searchSlice";
 
 interface Persist {
   key: string;
@@ -42,6 +43,7 @@ export const store = configureStore({
     cart: persistReducer(cartPersistConfig, cartReducer) as Reducer,
     order: persistReducer(orderPersistConfig, orderReducer) as Reducer,
     category: categoryReducer,
+    search: searchReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

@@ -14,3 +14,15 @@ export const getCategoriesName = createAsyncThunk(
     }
   }
 );
+
+export const getProducts = createAsyncThunk(
+  "products/fetch",
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get("https://fakestoreapi.com/products");
+      return res.data;
+    } catch (error: unknown) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
